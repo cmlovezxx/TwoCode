@@ -16,15 +16,15 @@ import com.zx.twocode.utils.PromptManager;
 
 public class BasicFragment extends BaseFragment {
 
-	// 设备编码 equipmentcode
-	// 设备名称 equipmentname
-	// 品牌 trademark
-	// 型号 type
-	// 规格 specification
-	// 供应商 provider
-	// 采购日期 procurementdate
-	// 批次号 batchnumber
-	// 安置地点 placementposition
+	// 璁惧缂栫爜 equipmentcode
+	// 璁惧鍚嶇О equipmentname
+	// 鍝佺墝 trademark
+	// 鍨嬪彿 type
+	// 瑙勬牸 specification
+	// 渚涘簲鍟� provider
+	// 閲囪喘鏃ユ湡 procurementdate
+	// 鎵规鍙� batchnumber
+	// 瀹夌疆鍦扮偣 placementposition
 	private TextView equipmentcode;
 	private TextView equipmentname;
 	private TextView trademark;
@@ -38,7 +38,7 @@ public class BasicFragment extends BaseFragment {
 	@Override
 	public View createView() {
 		// TextView view = new TextView(getActivity());
-		// view.setText("基本信息頁面");
+		// view.setText("鍩烘湰淇℃伅闋侀潰");
 		// return view;
 		View view = View.inflate(context, R.layout.fragment_basic, null);
 
@@ -96,7 +96,7 @@ public class BasicFragment extends BaseFragment {
 			}.executeProxy();
 		} else {
 			String codeResult = MiddleUIManager.getInstance().getCodeResult();
-			// TODO 二维码获取数据处理在此处
+			// TODO 浜岀淮鐮佽幏鍙栨暟鎹鐞嗗湪姝ゅ
 			if (codeResult != null) {
 
 				String[] codeResultArray = codeResult.split(",");
