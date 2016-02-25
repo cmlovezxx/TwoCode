@@ -62,7 +62,7 @@ public class BasicFragment extends BaseFragment {
 			new MyHttpTask<BasicListBean>() {
 
 				@Override
-				protected BasicListBean doInBackground(String... request) {
+				protected BasicListBean doInBackground(String... params) {
 
 					// HttpResult httpResult = HttpHelper.get(HttpHelper.URL
 					// + params[0] + "=" + params[1]);
