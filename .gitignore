@@ -1,2 +1,20 @@
-bin
-gen
+
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+build/
+*.iml
+gen/
+target/
+
+# Mac .DS_Store files
+.DS_Store
