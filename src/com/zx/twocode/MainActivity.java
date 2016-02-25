@@ -3,8 +3,6 @@ package com.zx.twocode;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.Window;
-import android.widget.RadioButton;
 
 import com.zx.twocode.global.ConstantValue;
 import com.zx.twocode.manager.BottomUIMagager;
@@ -21,7 +19,7 @@ public class MainActivity extends FragmentActivity {
 		setContentView(R.layout.activity_main);
 		init();
 	}
-
+	
 	public void init() {
 		// this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		BottomUIMagager.getInstance().init(this);

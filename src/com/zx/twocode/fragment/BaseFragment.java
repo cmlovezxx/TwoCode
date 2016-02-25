@@ -10,11 +10,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
-import com.zx.twocode.bean.BasicListBean;
-import com.zx.twocode.http.HttpHelper;
-import com.zx.twocode.http.HttpHelper.HttpResult;
-import com.zx.twocode.protocal.BaseProtocal;
-import com.zx.twocode.protocal.BasicProtocal;
 import com.zx.twocode.utils.NetUtil;
 import com.zx.twocode.utils.PromptManager;
 
