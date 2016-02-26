@@ -1,8 +1,6 @@
 package com.zx.twocode.fragment.impl;
 
 import android.os.SystemClock;
-import android.provider.Settings.Global;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,7 +10,6 @@ import com.zx.twocode.fragment.BaseFragment;
 import com.zx.twocode.global.GlobalParams;
 import com.zx.twocode.manager.MiddleUIManager;
 import com.zx.twocode.protocal.BasicProtocal;
-import com.zx.twocode.utils.PromptManager;
 
 public class BasicFragment extends BaseFragment {
 
