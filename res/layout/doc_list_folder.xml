@@ -20,7 +20,7 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="30dp"
         android:text="@string/app_name"
-        android:textSize="18sp" />
+        android:textSize="15sp" />
 
     <ImageView
         android:id="@+id/doc_list_arrow"
@@ -30,5 +30,7 @@
         android:layout_centerVertical="true"
         android:layout_marginEnd="20dp"
         android:src="@drawable/tree_ec" />
+
+    
 
 </RelativeLayout>
