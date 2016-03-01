@@ -34,9 +34,7 @@ public class BasicFragment extends BaseFragment {
 
 	@Override
 	public View createView() {
-		// TextView view = new TextView(getActivity());
-		// view.setText("鍩烘湰淇℃伅闋侀潰");
-		// return view;
+		
 		View view = View.inflate(context, R.layout.fragment_basic, null);
 
 		equipmentcode = (TextView) view.findViewById(R.id.zx_tv_equipmentcode);

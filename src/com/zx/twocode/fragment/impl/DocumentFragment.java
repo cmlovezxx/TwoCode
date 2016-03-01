@@ -63,32 +63,39 @@ public class DocumentFragment extends BaseFragment {
 						result);
 				docListView.setGroupIndicator(null);
 				docListView.setAdapter(docAdapter);
-				docListView.setOnGroupExpandListener(new OnGroupExpandListener() {
-					
-					@Override
-					public void onGroupExpand(int groupPosition) {
-						currentDirectory.setText(result.getDocumentList().get(groupPosition).getFolderName());
-					}
-				});
-				docListView.setOnGroupCollapseListener(new OnGroupCollapseListener() {
-					
-					@Override
-					public void onGroupCollapse(int groupPosition) {
-						currentDirectory.setText("");
-					}
-				});
+				docListView
+						.setOnGroupExpandListener(new OnGroupExpandListener() {
+
+							@Override
+							public void onGroupExpand(int groupPosition) {
+								currentDirectory.setText(result
+										.getDocumentList().get(groupPosition)
+										.getFolderName());
+							}
+						});
+				docListView
+						.setOnGroupCollapseListener(new OnGroupCollapseListener() {
+
+							@Override
+							public void onGroupCollapse(int groupPosition) {
+								currentDirectory.setText("");
+							}
+						});
 				docListView.setOnChildClickListener(new OnChildClickListener() {
 
 					@Override
 					public boolean onChildClick(ExpandableListView parent,
 							View v, int groupPosition, int childPosition,
 							long id) {
-						
-						currentDirectory.setText(result.getDocumentList().get(groupPosition).getFolderName());
-						Toast.makeText(context,
+
+						currentDirectory.setText(result.getDocumentList()
+								.get(groupPosition).getFolderName());
+						Toast.makeText(
+								context,
 								result.getDocumentList().get(groupPosition)
 										.getFolder().get(childPosition)
-										.getDocumentUrl(), Toast.LENGTH_SHORT).show();
+										.getDocumentUrl(), Toast.LENGTH_SHORT)
+								.show();
 						return true;
 					}
 				});
@@ -99,7 +106,6 @@ public class DocumentFragment extends BaseFragment {
 
 	@Override
 	protected String[] getParams() {
-		// TODO Auto-generated method stub
 		String[] strings = { "requestcode", "006" };
 		return strings;
 	}

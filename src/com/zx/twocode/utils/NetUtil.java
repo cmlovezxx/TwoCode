@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.util.Log;
 
 import com.zx.twocode.global.GlobalParams;
 
@@ -18,12 +19,12 @@ public class NetUtil {
 		boolean isWIFI = isWIFIConnection(context);
 		// 判断：Mobile链接
 		boolean isMOBILE = isMOBILEConnection(context);
-
+		Log.e("Test", isMOBILE + "");
 		// 如果Mobile在链接，判断是哪个APN被选中了
-		if (isMOBILE) {
-			// APN被选中,的代理信息是否有内容，如果有wap方式
-			readAPN(context);// 判断是哪个APN被选中了
-		}
+		// if (isMOBILE) {
+		// // APN被选中,的代理信息是否有内容，如果有wap方式
+		// readAPN(context);// 判断是哪个APN被选中了
+		// }
 
 		if (!isWIFI && !isMOBILE) {
 			return false;

@@ -126,19 +126,7 @@
             </LinearLayout>
             <!-- 客服电话 -->
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_below="@id/view_1"
-                android:background="@drawable/id_login_bg_1"
-                android:gravity="center_vertical" >
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dip"
-                    android:src="@drawable/id_login_tel" />
-            </LinearLayout>
+         
         </RelativeLayout>
     </ScrollView>
 

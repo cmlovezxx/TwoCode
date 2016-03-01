@@ -1,15 +1,20 @@
 package com.zx.twocode.manager;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import com.zxing.activity.CaptureActivity;
+
 import com.zx.twocode.R;
 import com.zx.twocode.global.ConstantValue;
 import com.zx.twocode.global.GlobalParams;
+import com.zxing.activity.CaptureActivity;
 
 public class TitleUIMagager {
 
@@ -26,6 +31,10 @@ public class TitleUIMagager {
 		return ll;
 	}
 
+	public EditText getEt_search() {
+		return et_search;
+	}
+
 	private LinearLayout ll;
 	private ImageButton code;
 	private EditText et_search;
@@ -35,8 +44,10 @@ public class TitleUIMagager {
 		ll = (LinearLayout) activity.findViewById(R.id.top);
 		code = (ImageButton) activity.findViewById(R.id.code);
 		et_search = (EditText) activity.findViewById(R.id.et_search);
+
 		search = (ImageButton) activity.findViewById(R.id.search);
 		setListner(activity);
+
 	}
 
 	private void setListner(final FragmentActivity activity) {
@@ -50,6 +61,19 @@ public class TitleUIMagager {
 
 			}
 		});
+		// et_search.setOnFocusChangeListener(new OnFocusChangeListener() {
+		//
+		// @Override
+		// public void onFocusChange(View v, boolean hasFocus) {
+		// Log.e("Test", hasFocus + "");
+		// InputMethodManager imm = (InputMethodManager) activity
+		// .getSystemService(Context.INPUT_METHOD_SERVICE);
+		//
+		// imm.hideSoftInputFromWindow(activity.getCurrentFocus()
+		// .getWindowToken(), 0);
+		// }
+		//
+		// });
 		search.setOnClickListener(new View.OnClickListener() {
 
 			@Override

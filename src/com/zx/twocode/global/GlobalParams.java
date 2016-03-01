@@ -13,4 +13,6 @@ public class GlobalParams {
 	 * 判断是否是第一次进入程序
 	 */
 	public static boolean isFirst = true;
+	
+	public static int number;
 }

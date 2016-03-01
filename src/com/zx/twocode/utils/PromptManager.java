@@ -5,6 +5,7 @@ import com.zx.twocode.R;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -50,9 +51,22 @@ public class PromptManager {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						// 跳转到系统的网络设置界面
-						Intent intent = new Intent();
-						intent.setClassName("com.android.settings",
-								"com.android.settings.WirelessSettings");
+						Intent intent = null;
+						// intent.setClassName("com.android.settings",
+						// "com.android.settings.WirelessSettings");
+						// context.startActivity(intent);
+
+						if (android.os.Build.VERSION.SDK_INT > 10) {
+							intent = new Intent(
+									android.provider.Settings.ACTION_SETTINGS);
+						} else {
+							intent = new Intent();
+							ComponentName component = new ComponentName(
+									"com.android.settings",
+									"com.android.settings.WirelessSettings");
+							intent.setComponent(component);
+							intent.setAction("android.intent.action.VIEW");
+						}
 						context.startActivity(intent);
 
 					}

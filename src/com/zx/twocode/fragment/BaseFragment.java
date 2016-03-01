@@ -66,6 +66,7 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
 			AsyncTask<String, Void, Params> {
 		/**
 		 * 刷新界面信息在这个方法中进行
+		 * 
 		 * @param result
 		 */
 		protected abstract void setViewInfo(Params result);

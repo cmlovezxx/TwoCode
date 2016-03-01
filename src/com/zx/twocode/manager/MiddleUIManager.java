@@ -36,6 +36,7 @@ public class MiddleUIManager {
 	public void init(FragmentActivity activity) {
 		vp = (MyViewPager) activity.findViewById(R.id.vp);
 		vp.setAdapter(new MyAdapter(activity.getSupportFragmentManager()));
+		// vp.setOffscreenPageLimit(5);
 		setListner();
 	}
 

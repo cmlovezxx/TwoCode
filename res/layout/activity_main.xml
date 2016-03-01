@@ -19,6 +19,7 @@
             android:padding="10dp" />
 
         <EditText
+            android:hint="请输入设备名称"
             android:id="@+id/et_search"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -78,7 +79,7 @@
             android:id="@+id/rb5"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:visibility="gone" /> 
+            android:visibility="gone" />
     </RadioGroup>
 
 </LinearLayout>

@@ -1,4 +1,5 @@
 package com.zx.twocode.view;
+
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -13,7 +14,6 @@ public class MyViewPager extends ViewPager {
 
 	public MyViewPager(Context context, AttributeSet attrs) {
 		super(context, attrs);
-
 	}
 
 	@Override
@@ -22,4 +22,9 @@ public class MyViewPager extends ViewPager {
 		return false;
 	}
 
+	@Override
+	public boolean onInterceptTouchEvent(MotionEvent arg0) {
+
+		return false;
+	}
 }
