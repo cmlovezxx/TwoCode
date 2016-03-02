@@ -1,7 +1,5 @@
 package com.zx.twocode.protocal;
 
-import java.util.List;
-
 import com.google.gson.Gson;
 import com.zx.twocode.bean.BasicListBean;
 

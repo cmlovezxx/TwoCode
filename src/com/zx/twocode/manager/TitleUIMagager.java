@@ -1,12 +1,8 @@
 package com.zx.twocode.manager;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -79,10 +75,10 @@ public class TitleUIMagager {
 			@Override
 			public void onClick(View v) {
 				// TODO 根据edittext的内容，请求服务器后，跳转到搜索页面。
-				GlobalParams.isFirst = false;
+				// GlobalParams.isFirst = false;
 				BottomUIMagager.getInstance().setAllCheckFalse();
-				MiddleUIManager.getInstance()
-						.ChangeUI(ConstantValue.BASIC_INFO);
+				MiddleUIManager.getInstance().ChangeUI(
+						ConstantValue.SEARCH_INFO);
 
 			}
 		});

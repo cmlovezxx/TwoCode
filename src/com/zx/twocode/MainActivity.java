@@ -96,13 +96,13 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	public void onBackPressed() {
 		// super.onBackPressed();
-		if (MiddleUIManager.getInstance().getVp().getCurrentItem() == 1
-				|| MiddleUIManager.getInstance().getVp().getCurrentItem() == 0) {
+		if (MiddleUIManager.getInstance().getVp().getCurrentItem() == ConstantValue.BASIC_INFO
+				|| MiddleUIManager.getInstance().getVp().getCurrentItem() == ConstantValue.LOGIN_INFO) {
 			PromptManager.showExitSystem(this);
 
 		} else {
-			MiddleUIManager.getInstance().ChangeUI(ConstantValue.DETAIL_INFO);
-			BottomUIMagager.getInstance().setRadioButton1();
+			MiddleUIManager.getInstance().ChangeUI(ConstantValue.BASIC_INFO);
+			BottomUIMagager.getInstance().setAllCheckFalse();
 
 		}
 	}
