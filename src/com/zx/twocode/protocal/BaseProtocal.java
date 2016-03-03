@@ -14,20 +14,27 @@ public abstract class BaseProtocal<T> {
 			return paserJson(json);
 		}
 		return null;
-
+		
 	}
 
+	
 	// 解析json需要子类根据自己的数据解析
 	public abstract T paserJson(String json);
 
 	private String loadServer(String... params) {
 
+		
 		HttpResult httpResult = HttpHelper.get(HttpHelper.URL
 				+ getRequestParams(params));
+		if(httpResult == null)
+			return null;
 		String json = httpResult.getString();
 		return json;
 	}
-//得到请求参数，并且形成一个例如?requestcode=003&equipmentcode=EHS-6000012的请求
+
+
+
+	//得到请求参数，并且形成一个例如?requestcode=003&equipmentcode=EHS-6000012的请求
 	private String getRequestParams(String... params) {
 		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < params.length - 1; i += 2) {

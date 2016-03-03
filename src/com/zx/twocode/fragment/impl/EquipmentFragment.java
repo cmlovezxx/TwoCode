@@ -20,17 +20,20 @@ import com.zx.twocode.bean.EquipmentListBean;
 import com.zx.twocode.bean.Node;
 import com.zx.twocode.fragment.BaseFragment;
 import com.zx.twocode.global.GlobalParams;
+import com.zx.twocode.protocal.BaseProtocal;
+import com.zx.twocode.protocal.EquipmentProtocal;
 import com.zx.twocode.utils.Helper;
 
-public class EquipmentFragment extends BaseFragment {
+public class EquipmentFragment extends BaseFragment<EquipmentListBean> {
 	private ListView zx_lv_currentchild;
 	private TextView zx_tv_currentequipment;
 	private Node currentNode;
 	private List<Node> currentAllParent = new ArrayList<Node>();
 	private LinearLayout zx_ll_path;
 	private EquipmentListViewAdapter adapter;
-	//所有的数据转成Node
+	// 所有的数据转成Node
 	private List<Node> nodes;
+
 	@Override
 	public View createView() {
 		View view = View.inflate(context, R.layout.fragment_equipment, null);
@@ -42,52 +45,11 @@ public class EquipmentFragment extends BaseFragment {
 		return view;
 	}
 
-	@Override
-	public void refreshView() {
-
-		new MyHttpTask<EquipmentListBean>() {
-
-			
-
-			@Override
-			protected EquipmentListBean doInBackground(String... params) {
-
-				SystemClock.sleep(1000);
-				EquipmentListBean equipmentListBean = new EquipmentListBean();
-				equipmentListBean.setTestData();
-				return equipmentListBean;
-			}
-
-			@Override
-			protected void setViewInfo(EquipmentListBean result) {
-				nodes = Helper.getNodes(result.getData());
-				for (Node n : nodes) {
-
-					if (n.getId().equals(GlobalParams.currentEquipment)) {
-
-						currentNode = n;
-						break;
-					}
-				}
-				getAllData();
-
-				zx_lv_currentchild
-						.setOnItemClickListener(new OnItemClickListener() {
-
-							@Override
-							public void onItemClick(AdapterView<?> arg0,
-									View arg1, int arg2, long arg3) {
-								currentNode = currentNode.getChildren().get(
-										arg2);
-								GlobalParams.currentEquipment = currentNode
-										.getId();
-								getAllData();
-							}
-						});
-
-			}
-
-		}.executeProxy();
+	protected EquipmentListBean doInBackground(String... params) {
+		SystemClock.sleep(500);
+		EquipmentListBean equipmentListBean = new EquipmentListBean();
+		equipmentListBean.setTestData();
+		return equipmentListBean;
 	}
 
 	private void getAllData() {
@@ -125,4 +87,36 @@ public class EquipmentFragment extends BaseFragment {
 		String[] strings = new String[] { "requestcode", "005" };
 		return strings;
 	}
+
+	@Override
+	protected void setView(EquipmentListBean result) {
+		nodes = Helper.getNodes(result.getData());
+		for (Node n : nodes) {
+
+			if (n.getId().equals(GlobalParams.currentEquipment)) {
+
+				currentNode = n;
+				break;
+			}
+		}
+		getAllData();
+
+		zx_lv_currentchild.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				currentNode = currentNode.getChildren().get(arg2);
+				GlobalParams.currentEquipment = currentNode.getId();
+				getAllData();
+			}
+		});
+
+	}
+
+	@Override
+	protected BaseProtocal<EquipmentListBean> createImplProtocal() {
+		return new EquipmentProtocal();
+	}
+
 }

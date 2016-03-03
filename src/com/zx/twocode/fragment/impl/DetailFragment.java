@@ -9,9 +9,12 @@ import com.zx.twocode.R;
 import com.zx.twocode.adapter.DetailListViewAdapter;
 import com.zx.twocode.bean.DetailListBean;
 import com.zx.twocode.fragment.BaseFragment;
+import com.zx.twocode.protocal.BaseProtocal;
 import com.zx.twocode.protocal.DetailProtocal;
+import com.zx.twocode.utils.ContextUtil;
+import com.zx.twocode.utils.PromptManager;
 
-public class DetailFragment extends BaseFragment {
+public class DetailFragment extends BaseFragment<DetailListBean> {
 	private TextView equipmentcode;// 设备编码
 	private TextView equipmentname;// 设备名称
 	private TextView placementposition;// 安置地点
@@ -71,69 +74,54 @@ public class DetailFragment extends BaseFragment {
 	}
 
 	@Override
-	public void refreshView() {
-		new MyHttpTask<DetailListBean>() {
-
-			@Override
-			protected DetailListBean doInBackground(String... params) {
-
-				// HttpResult httpResult = HttpHelper.get(HttpHelper.URL
-				// + params[0] + "=" + params[1]);
-				// String json = httpResult.getString();
-				SystemClock.sleep(1000);
-				DetailProtocal detailProtocal = new DetailProtocal();
-				DetailListBean detailListBean = detailProtocal.load(params);
-
-				return detailListBean;
-			}
-
-			@Override
-			protected void setViewInfo(DetailListBean result) {
-				equipmentcode.setText(result.getTable1().get(0)
-						.getEquipmentcode());
-				equipmentname.setText(result.getTable1().get(0)
-						.getEquipmentname());
-				trademark.setText(result.getTable1().get(0).getTrademark());
-				type.setText(result.getTable1().get(0).getType());
-				specification.setText(result.getTable1().get(0)
-						.getSpecification());
-				provider.setText(result.getTable1().get(0).getProvider());
-				procurementdate.setText(result.getTable1().get(0)
-						.getProcurementdate());
-				batchnumbe.setText(result.getTable1().get(0).getBatchnumbe());
-				placementposition.setText(result.getTable1().get(0)
-						.getPlacementposition());
-				equipmenttype.setText(result.getTable1().get(0)
-						.getEquipmenttype());// 设备类型
-				superequipment.setText(result.getTable1().get(0)
-						.getSuperequipment());// 上级设备
-				externaldimension.setText(result.getTable1().get(0)
-						.getExternaldimension());// 外观尺寸
-				weight.setText(result.getTable1().get(0).getWeight());// 重量
-				manufacture.setText(result.getTable1().get(0).getManufacture());// 制造商
-				factorycode.setText(result.getTable1().get(0).getFactorycode());// 出厂编码
-				produceddate.setText(result.getTable1().get(0)
-						.getProduceddate());// 生产日期
-				durableyears.setText(result.getTable1().get(0)
-						.getDurableyears());// 使用年限
-				maintechnicalparameters.setText(result.getTable1().get(0)
-						.getMaintechnicalparameters());// 主要技术参数
-				remark.setText(result.getTable1().get(0).getRemark());// 备注
-				equipmentstate.setText(result.getTable1().get(0)
-						.getEquipmentstate());// 设备状态
-				modificationtime.setText(result.getTable1().get(0)
-						.getModificationtime());// 修改时间
-				listViewParts.setAdapter(new DetailListViewAdapter(result
-						.getTable2(), context));
-			}
-
-		}.executeProxy();
-	}
-
-	@Override
 	protected String[] getParams() {
 		String[] strings = new String[] { "requestcode", "004" };
 		return strings;
+	}
+
+	@Override
+	protected void setView(DetailListBean result) {
+		equipmentcode.setText(result.getTable1().get(0)
+				.getEquipmentcode());
+		equipmentname.setText(result.getTable1().get(0)
+				.getEquipmentname());
+		trademark.setText(result.getTable1().get(0).getTrademark());
+		type.setText(result.getTable1().get(0).getType());
+		specification.setText(result.getTable1().get(0)
+				.getSpecification());
+		provider.setText(result.getTable1().get(0).getProvider());
+		procurementdate.setText(result.getTable1().get(0)
+				.getProcurementdate());
+		batchnumbe.setText(result.getTable1().get(0).getBatchnumbe());
+		placementposition.setText(result.getTable1().get(0)
+				.getPlacementposition());
+		equipmenttype.setText(result.getTable1().get(0)
+				.getEquipmenttype());// 设备类型
+		superequipment.setText(result.getTable1().get(0)
+				.getSuperequipment());// 上级设备
+		externaldimension.setText(result.getTable1().get(0)
+				.getExternaldimension());// 外观尺寸
+		weight.setText(result.getTable1().get(0).getWeight());// 重量
+		manufacture.setText(result.getTable1().get(0).getManufacture());// 制造商
+		factorycode.setText(result.getTable1().get(0).getFactorycode());// 出厂编码
+		produceddate.setText(result.getTable1().get(0)
+				.getProduceddate());// 生产日期
+		durableyears.setText(result.getTable1().get(0)
+				.getDurableyears());// 使用年限
+		maintechnicalparameters.setText(result.getTable1().get(0)
+				.getMaintechnicalparameters());// 主要技术参数
+		remark.setText(result.getTable1().get(0).getRemark());// 备注
+		equipmentstate.setText(result.getTable1().get(0)
+				.getEquipmentstate());// 设备状态
+		modificationtime.setText(result.getTable1().get(0)
+				.getModificationtime());// 修改时间
+		listViewParts.setAdapter(new DetailListViewAdapter(result
+				.getTable2(), context));		
+	}
+
+	@Override
+	protected BaseProtocal<DetailListBean> createImplProtocal() {
+		return new DetailProtocal();
 	}
 
 }

@@ -8,5 +8,6 @@
     <string name="is_regist_password">密码</string>
     <string name="is_auto_login">7天自动登陆</string>
     <string name="is_positive">确定</string>
+    <string name="is_negative">取消</string>
 
 </resources>

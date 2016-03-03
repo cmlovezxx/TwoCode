@@ -15,8 +15,9 @@ import com.zx.twocode.fragment.BaseFragment;
 import com.zx.twocode.global.ConstantValue;
 import com.zx.twocode.manager.MiddleUIManager;
 import com.zx.twocode.manager.SharedPreferencesManager;
+import com.zx.twocode.protocal.BaseProtocal;
 
-public class LoginFragment extends BaseFragment {
+public class LoginFragment extends BaseFragment<String> {
 
 	private EditText login_username, login_password;
 	private ImageView clear;
@@ -112,6 +113,18 @@ public class LoginFragment extends BaseFragment {
 
 	@Override
 	protected String[] getParams() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected void setView(String result) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected BaseProtocal<String> createImplProtocal() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -1,7 +1,5 @@
 package com.zx.twocode.utils;
 
-import com.zx.twocode.R;
-
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
@@ -11,6 +9,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.widget.Toast;
+
+import com.zx.twocode.R;
 
 /**
  * 提示信息的管理
@@ -26,6 +26,7 @@ public class PromptManager {
 
 		dialog.setMessage("请等候，数据加载中……");
 		dialog.show();
+		dialog.setCanceledOnTouchOutside(false);
 	}
 
 	public static void closeProgressDialog() {
@@ -117,6 +118,7 @@ public class PromptManager {
 				.show();
 	}
 
+	
 	public static void showToast(Context context, String msg) {
 		Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
 	}

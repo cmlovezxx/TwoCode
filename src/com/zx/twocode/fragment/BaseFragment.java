@@ -1,8 +1,11 @@
 package com.zx.twocode.fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
@@ -10,10 +13,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
+import com.zx.twocode.R;
+import com.zx.twocode.protocal.BaseProtocal;
 import com.zx.twocode.utils.NetUtil;
 import com.zx.twocode.utils.PromptManager;
 
-public abstract class BaseFragment extends Fragment implements OnClickListener {
+public abstract class BaseFragment<Params> extends Fragment implements
+		OnClickListener {
 
 	private View view;
 	protected FragmentActivity context;
@@ -50,8 +56,25 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
 	 */
 
 	public void refreshView() {
+		new MyHttpTask<Params>() {
 
+			@Override
+			protected void setViewInfo(Params result) {
+				setView(result);
+			}
+
+			@Override
+			protected BaseProtocal<Params> createProtocal() {
+				
+				return createImplProtocal();
+			}
+
+		}.executeProxy();
 	}
+
+	protected abstract void setView(Params result);
+
+	protected abstract BaseProtocal<Params> createImplProtocal();
 
 	/**
 	 * 处理该页面的点击事件
@@ -64,12 +87,23 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
 	// TODO 异步加载框架 读取网络 获取数据
 	protected abstract class MyHttpTask<Params> extends
 			AsyncTask<String, Void, Params> {
+		private BaseProtocal<Params> protocal;
+
 		/**
 		 * 刷新界面信息在这个方法中进行
 		 * 
 		 * @param result
 		 */
 		protected abstract void setViewInfo(Params result);
+
+		protected Params doInBackground(String... params) {
+			SystemClock.sleep(500);
+			protocal = createProtocal();
+			Params result = protocal.load(params);
+			return result;
+		}
+
+		protected abstract BaseProtocal<Params> createProtocal();
 
 		@Override
 		protected void onPostExecute(Params result) {
@@ -81,6 +115,26 @@ public abstract class BaseFragment extends Fragment implements OnClickListener {
 			if (result != null) {
 
 				setViewInfo(result);
+			} else {
+				new AlertDialog.Builder(context)
+						.setIcon(R.drawable.icon)
+						.setTitle(R.string.app_name)
+						.setMessage("获取数据失败，请重试")
+						.setNegativeButton("取消", null)
+						.setPositiveButton(
+								"重试",
+								new android.content.DialogInterface.OnClickListener() {
+
+									@Override
+									public void onClick(DialogInterface dialog,
+											int which) {
+//										PromptManager
+//												.showProgressDialog(context);
+										refreshView();
+									}
+								})
+						.show()
+						.setCanceledOnTouchOutside(false);
 			}
 		}
 

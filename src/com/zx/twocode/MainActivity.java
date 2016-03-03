@@ -6,8 +6,10 @@ import android.os.IBinder;
 import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.zx.twocode.global.ConstantValue;
 import com.zx.twocode.manager.BottomUIMagager;
@@ -37,6 +39,16 @@ public class MainActivity extends FragmentActivity {
 		}
 
 		SharedPreferencesManager.getInstance().setSp(this);
+		LinearLayout activity_main = (LinearLayout) findViewById(R.id.activity_main);  
+		activity_main.setOnTouchListener(new OnTouchListener()  
+		{  
+		              
+		    public boolean onTouch(View arg0, MotionEvent arg1)  
+		    {  
+		        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);  
+		        return imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);  
+		    }  
+		});   
 	}
 
 	@Override
@@ -89,6 +101,7 @@ public class MainActivity extends FragmentActivity {
 		}
 		return false;
 	}
+
 
 	/**
 	 * 返回健

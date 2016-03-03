@@ -19,6 +19,7 @@ import org.apache.http.protocol.HttpContext;
 import org.apache.http.protocol.SyncBasicHttpContext;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.lidroid.xutils.util.IOUtils;
 import com.zx.twocode.utils.LogUtils;
@@ -27,13 +28,13 @@ public class HttpHelper {
 
 	public static final String URL = "http://192.168.8.125:6001/Switches.aspx?";
 
-	/** getÇëÇó£¬»ñÈ¡·µ»Ø×Ö·û´®ÄÚÈÝ */
+	/** getï¿½ï¿½ï¿½ó£¬»ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	public static HttpResult get(String url) {
 		HttpGet httpGet = new HttpGet(url);
 		return execute(url, httpGet);
 	}
 
-	/** postÇëÇó£¬»ñÈ¡·µ»Ø×Ö·û´®ÄÚÈÝ */
+	/** postï¿½ï¿½ï¿½ó£¬»ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	public static HttpResult post(String url, byte[] bytes) {
 		HttpPost httpPost = new HttpPost(url);
 		ByteArrayEntity byteArrayEntity = new ByteArrayEntity(bytes);
@@ -41,40 +42,41 @@ public class HttpHelper {
 		return execute(url, httpPost);
 	}
 
-	/** ÏÂÔØ */
+	/** ï¿½ï¿½ï¿½ï¿½ */
 	public static HttpResult download(String url) {
 		HttpGet httpGet = new HttpGet(url);
 		return execute(url, httpGet);
 	}
 
-	/** Ö´ÐÐÍøÂç·ÃÎÊ */
+	/** Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	private static HttpResult execute(String url, HttpRequestBase requestBase) {
-		boolean isHttps = url.startsWith("https://");// ÅÐ¶ÏÊÇ·ñÐèÒª²ÉÓÃhttps
+		boolean isHttps = url.startsWith("https://");// ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½https
 		AbstractHttpClient httpClient = HttpClientFactory.create(isHttps);
 		HttpContext httpContext = new SyncBasicHttpContext(
 				new BasicHttpContext());
 		HttpRequestRetryHandler retryHandler = httpClient
-				.getHttpRequestRetryHandler();// »ñÈ¡ÖØÊÔ»úÖÆ
+				.getHttpRequestRetryHandler();// ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½
 		int retryCount = 0;
 		boolean retry = true;
 		while (retry) {
 			try {
 				HttpResponse response = httpClient.execute(requestBase,
-						httpContext);// ·ÃÎÊÍøÂç
+						httpContext);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				if (response != null) {
 					return new HttpResult(response, httpClient, requestBase);
 				}
 			} catch (Exception e) {
 				IOException ioException = new IOException(e.getMessage());
 				retry = retryHandler.retryRequest(ioException, ++retryCount,
-						httpContext);// °Ñ´íÎóÒì³£½»¸øÖØÊÔ»úÖÆ£¬ÒÔÅÐ¶ÏÊÇ·ñÐèÒª²ÉÈ¡´ÓÊÂ
+						httpContext);// ï¿½Ñ´ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô»ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
 				LogUtils.e(e);
+				Log.e("retry", "times:"+retryCount);
 			}
 		}
 		return null;
 	}
 
-	/** httpµÄ·µ»Ø½á¹ûµÄ·â×°£¬¿ÉÒÔÖ±½Ó´ÓÖÐ»ñÈ¡·µ»ØµÄ×Ö·û´®»òÕßÁ÷ */
+	/** httpï¿½Ä·ï¿½ï¿½Ø½ï¿½ï¿½ï¿½Ä·ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó´ï¿½ï¿½Ð»ï¿½È¡ï¿½ï¿½ï¿½Øµï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	public static class HttpResult {
 		private HttpResponse mResponse;
 		private InputStream mIn;
@@ -94,7 +96,7 @@ public class HttpHelper {
 			return status.getStatusCode();
 		}
 
-		/** ´Ó½á¹ûÖÐ»ñÈ¡×Ö·û´®£¬Ò»µ©»ñÈ¡£¬»á×Ô¶¯¹ØÁ÷£¬²¢ÇÒ°Ñ×Ö·û´®±£´æ£¬·½±ãÏÂ´Î»ñÈ¡ */
+		/** ï¿½Ó½ï¿½ï¿½ï¿½Ð»ï¿½È¡ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò°ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ£¬ï¿½ï¿½ï¿½ï¿½ï¿½Â´Î»ï¿½È¡ */
 		public String getString() {
 			if (!TextUtils.isEmpty(mStr)) {
 				return mStr;
@@ -121,7 +123,7 @@ public class HttpHelper {
 			return mStr;
 		}
 
-		/** »ñÈ¡Á÷£¬ÐèÒªÊ¹ÓÃÍê±Ïºóµ÷ÓÃclose·½·¨¹Ø±ÕÍøÂçÁ¬½Ó */
+		/** ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÊ¹ï¿½ï¿½ï¿½ï¿½Ïºï¿½ï¿½ï¿½ï¿½closeï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 		public InputStream getInputStream() {
 			if (mIn == null && getCode() < 300) {
 				HttpEntity entity = mResponse.getEntity();
@@ -134,7 +136,7 @@ public class HttpHelper {
 			return mIn;
 		}
 
-		/** ¹Ø±ÕÍøÂçÁ¬½Ó */
+		/** ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 		public void close() {
 			if (mRequestBase != null) {
 				mRequestBase.abort();

@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="19"
+        android:minSdkVersion="11"
         android:targetSdkVersion="22" />
 
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <instrumentation
         android:name="android.test.InstrumentationTestRunner"
@@ -23,13 +24,15 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:name="com.zx.twocode.utils.ContextUtil"
         android:theme="@android:style/Theme.Light.NoTitleBar" >
         <uses-library android:name="android.test.runner" />
 
         <activity
             android:name="com.zx.twocode.MainActivity"
             android:label="@string/app_name"
-            android:windowSoftInputMode="adjustPan" >
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,8 +44,12 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:windowSoftInputMode="stateAlwaysHidden" >
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
         </activity>
+        <activity
+			android:name="com.zx.twocode.PDFViewActivity"
+			android:label="@string/app_name" >
+		</activity>
     </application>
 
 </manifest>
