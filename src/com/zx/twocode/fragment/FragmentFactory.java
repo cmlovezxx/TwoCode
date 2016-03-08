@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.zx.twocode.fragment.impl.BasicFragment;
+import com.zx.twocode.fragment.impl.BlankFragment;
 import com.zx.twocode.fragment.impl.DetailFragment;
 import com.zx.twocode.fragment.impl.MyFragment;
 import com.zx.twocode.fragment.impl.EquipmentFragment;
@@ -35,6 +36,8 @@ public class FragmentFactory {
 				fragment = new BasicFragment();
 			} else if (position == ConstantValue.SEARCH_INFO) {
 				fragment = new SearchFragment();
+			} else if (position == ConstantValue.BLANK_INFO) {
+				fragment = new BlankFragment();
 			}
 			if (fragment != null) {
 				mFragments.put(position, fragment);// �Ѵ����õ�Fragment��ŵ������л�������

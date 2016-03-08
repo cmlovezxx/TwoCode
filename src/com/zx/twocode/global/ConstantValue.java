@@ -14,4 +14,5 @@ public interface ConstantValue {
 	int MY_INFO = 4;
 	int BASIC_INFO = 5;
 	int SEARCH_INFO = 6;
+	int BLANK_INFO = 7;
 }

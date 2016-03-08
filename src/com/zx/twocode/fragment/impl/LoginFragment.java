@@ -55,7 +55,7 @@ public class LoginFragment extends BaseFragment<String> {
 					}
 
 					MiddleUIManager.getInstance().ChangeUI(
-							ConstantValue.BASIC_INFO);
+							ConstantValue.BLANK_INFO);
 				} else {
 					Toast.makeText(context, "您的用户名和密码错误！", Toast.LENGTH_LONG)
 							.show();

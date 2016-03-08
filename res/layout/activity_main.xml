@@ -17,24 +17,37 @@
             android:id="@+id/code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/search2"
-            android:padding="10dp" />
+            android:layout_margin="5dp"
+            android:background="@drawable/search2" />
 
-        <EditText
-            android:id="@+id/et_search"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_weight="1"
-            android:imeOptions="actionDone"
-            android:singleLine="true" />
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@null"
+                android:imeOptions="actionDone"
+                android:singleLine="true" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/search4" />
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/search3"
-            android:padding="10dp" />
+            android:layout_margin="5dp"
+            android:background="@drawable/search3" />
     </LinearLayout>
 
     <com.zx.twocode.view.MyViewPager
@@ -47,6 +60,7 @@
         android:id="@+id/rg_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/search6"
         android:orientation="horizontal" >
 
         <RadioButton
