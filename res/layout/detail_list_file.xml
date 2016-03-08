@@ -11,7 +11,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="零件名称:" />
+            android:text="@string/zx_tv_component_name" />
 
         <TextView
             android:id="@+id/zx_tv_partsname"
@@ -27,7 +27,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="所属设备:" />
+            android:text="@string/zx_tv_subordinate_equipment" />
 
         <TextView
             android:id="@+id/zx_tv_subordinateequipment"
@@ -43,7 +43,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="规格:" />
+            android:text="@string/zx_tv_specification" />
 
         <TextView
             android:id="@+id/zx_tv_specification"
@@ -59,7 +59,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="材质:" />
+            android:text="@string/zx_tv_material" />
 
         <TextView
             android:id="@+id/zx_tv_texture"
@@ -75,7 +75,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="数量:" />
+            android:text="@string/zx_tv_number" />
 
         <TextView
             android:id="@+id/zx_tv_number"
@@ -91,7 +91,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="修改时间:" />
+            android:text="@string/zx_tv_modification_time" />
 
         <TextView
             android:id="@+id/zx_tv_modificationtime"

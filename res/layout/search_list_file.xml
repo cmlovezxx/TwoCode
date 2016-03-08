@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="设备编码：" />
+            android:text="@string/zx_tv_equipment_code" />
 
         <TextView
             android:id="@+id/zx_tv_equipmentcode"
@@ -29,7 +29,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="设备名称：" />
+            android:text="@string/zx_tv_equipment_name" />
 
         <TextView
             android:id="@+id/zx_tv_equipmentname"
@@ -44,7 +44,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="设备类型：" />
+            android:text="@string/zx_tv_equipment_category" />
     <TextView
         android:id="@+id/zx_tv_equipmenttype"
         android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="安置地点：" />
+            android:text="@string/zx_tv_location" />
     <TextView
         android:id="@+id/zx_tv_placementposition"
         android:layout_width="wrap_content"

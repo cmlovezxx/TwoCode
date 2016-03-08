@@ -50,9 +50,9 @@ public class PromptManager {
 	 */
 	public static void showNoNetWork(final Context context) {
 		AlertDialog.Builder builder = new Builder(context);
-		builder.setIcon(R.drawable.icon)
-				//
-				.setTitle(R.string.app_name)
+		builder
+		//
+		.setTitle(R.string.app_name)
 				//
 				.setMessage("当前无网络")
 				.setPositiveButton("设置", new OnClickListener() {
@@ -89,9 +89,9 @@ public class PromptManager {
 	 */
 	public static void showExitSystem(Context context) {
 		AlertDialog.Builder builder = new Builder(context);
-		builder.setIcon(R.drawable.icon)
-				//
-				.setTitle(R.string.app_name)
+		builder
+		//
+		.setTitle(R.string.app_name)
 				//
 				.setMessage("是否退出应用")
 				.setPositiveButton("确定", new OnClickListener() {
@@ -118,7 +118,7 @@ public class PromptManager {
 	 */
 	public static void showErrorDialog(Context context, String msg) {
 		new AlertDialog.Builder(context)//
-				.setIcon(R.drawable.icon)//
+				//
 				.setTitle(R.string.app_name)//
 				.setMessage(msg)//
 				.setNegativeButton(context.getString(R.string.is_positive),

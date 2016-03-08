@@ -6,7 +6,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="zx_tv_username">Username</string>
     <string name="zx_tv_regist_password">Password</string>
-    <string name="zx_tv_auto_login">Seven day auto login</string>
+    <string name="zx_tv_auto_login">Auto login within seven days</string>
     <string name="is_positive">Positive</string>
     <string name="is_negative">Negative</string>
     <string name="zx_rv_detailinfo">Detail</string>
@@ -15,5 +15,54 @@
     <string name="zx_rv_myinfo">My</string>
     <string name="zx_tv_equipment_code">Equipment code:</string>
     <string name="zx_tv_equipment_name">Equipment name:</string>
+    <!-- 品牌 -->
+    <string name="zx_tv_brand">Brand:</string>
+    <!-- 型号 -->
+    <string name="zx_tv_model">Model:</string>
+    <!-- 规格 -->
+    <string name="zx_tv_specification">Specification:</string>
+    <!-- 供应商 -->
+    <string name="zx_tv_supplier">Supplier:</string>
+    <!-- 采购日期 -->
+    <string name="zx_tv_purchase_date">Purchase date:</string>
+    <!-- 批次号 -->
+    <string name="zx_tv_batch_number">Batch number:</string>
+    <!-- 安置地点 -->
+    <string name="zx_tv_location">Location:</string>
+    <!-- 设备类型 -->
+    <string name="zx_tv_equipment_category">Equipment category:</string>
+    <!-- 上级设备 -->
+    <string name="zx_tv_super_equipment">Super equipment:</string>
+    <!-- 外观尺寸 -->
+    <string name="zx_tv_physical_dimension">Physical dimension:</string>
+    <!-- 重量 -->
+    <string name="zx_tv_weight">Weight:</string>
+    <!-- 制造商 -->
+    <string name="zx_tv_produ1cer">Produ1cer:</string>
+    <!-- 出厂编码 -->
+    <string name="zx_tv_production_code">Production code:</string>
+    <!-- 生产日期 -->
+    <string name="zx_tv_production_date">Production date:</string>
+    <!-- 使用年限 -->
+    <string name="zx_tv_life_span">Life span:</string>
+    <!-- 主要技术参数 -->
+    <string name="zx_tv_main_specification_fields">Main specification fields:</string>
+    <!-- 备注 -->
+    <string name="zx_tv_remark">Remark:</string>
+    <!-- 设备状态 -->
+    <string name="zx_tv_status">status:</string>
+    <!-- 修改时间 -->
+    <string name="zx_tv_modification_time">Modification time:</string>
+    <!-- 零件列表 -->
+    <string name="zx_tv_component_list">Component list:</string>
+    <!-- 零件名称 -->
+    <string name="zx_tv_component_name">Component name:</string>
+    <!-- 零件所属设备 -->
+    <string name="zx_tv_subordinate_equipment">Subordinate equipment:</string>
+	<!-- 材质 -->
+    <string name="zx_tv_material">Material:</string>
+    <!-- 数量 -->
+    <string name="zx_tv_number">Amount:</string>
+    <string name="zx_tv_document_path">Document path:</string>
 
 </resources>

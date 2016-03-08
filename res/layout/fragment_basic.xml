@@ -49,7 +49,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="品牌:" />
+                android:text="@string/zx_tv_brand" />
 
             <TextView
                 android:id="@+id/zx_tv_trademark"
@@ -65,7 +65,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="型号:" />
+                android:text="@string/zx_tv_model" />
 
             <TextView
                 android:id="@+id/zx_tv_type"
@@ -81,7 +81,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="规格:" />
+                android:text="@string/zx_tv_specification" />
 
             <TextView
                 android:id="@+id/zx_tv_specification"
@@ -97,7 +97,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="供应商:" />
+                android:text="@string/zx_tv_supplier" />
 
             <TextView
                 android:id="@+id/zx_tv_provider"
@@ -113,7 +113,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="采购日期:" />
+                android:text="@string/zx_tv_purchase_date" />
 
             <TextView
                 android:id="@+id/zx_tv_procurementdate"
@@ -129,7 +129,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="批次号:" />
+                android:text="@string/zx_tv_batch_number" />
 
             <TextView
                 android:id="@+id/zx_tv_batchnumber"
@@ -145,7 +145,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="安置地点:" />
+                android:text="@string/zx_tv_location" />
 
             <TextView
                 android:id="@+id/zx_tv_placementposition"

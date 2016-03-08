@@ -10,13 +10,14 @@
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/search1"
         android:orientation="horizontal" >
 
         <ImageButton
             android:id="@+id/code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/qr"
+            android:background="@drawable/search2"
             android:padding="10dp" />
 
         <EditText
@@ -25,7 +26,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
-            android:hint="请输入设备名称"
             android:imeOptions="actionDone"
             android:singleLine="true" />
 
@@ -33,7 +33,7 @@
             android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/zoomfit"
+            android:background="@drawable/search3"
             android:padding="10dp" />
     </LinearLayout>
 
@@ -47,7 +47,6 @@
         android:id="@+id/rg_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bottom_tab_bg"
         android:orientation="horizontal" >
 
         <RadioButton

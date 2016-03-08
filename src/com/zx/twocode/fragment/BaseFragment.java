@@ -118,7 +118,7 @@ public abstract class BaseFragment<Params> extends Fragment implements
 				setViewInfo(result);
 			} else {
 				new AlertDialog.Builder(context)
-						.setIcon(R.drawable.icon)
+
 						.setTitle(R.string.app_name)
 						.setMessage("获取数据失败，请重试")
 						.setNegativeButton("取消", null)
