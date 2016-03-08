@@ -9,6 +9,7 @@ import com.zx.twocode.R;
 import com.zx.twocode.adapter.DetailListViewAdapter;
 import com.zx.twocode.bean.DetailListBean;
 import com.zx.twocode.fragment.BaseFragment;
+import com.zx.twocode.global.GlobalParams;
 import com.zx.twocode.protocal.BaseProtocal;
 import com.zx.twocode.protocal.DetailProtocal;
 import com.zx.twocode.utils.ContextUtil;
@@ -81,46 +82,39 @@ public class DetailFragment extends BaseFragment<DetailListBean> {
 
 	@Override
 	protected void setView(DetailListBean result) {
-		equipmentcode.setText(result.getTable1().get(0)
-				.getEquipmentcode());
-		equipmentname.setText(result.getTable1().get(0)
-				.getEquipmentname());
+		equipmentcode.setText(result.getTable1().get(0).getEquipmentcode());
+		equipmentname.setText(result.getTable1().get(0).getEquipmentname());
 		trademark.setText(result.getTable1().get(0).getTrademark());
 		type.setText(result.getTable1().get(0).getType());
-		specification.setText(result.getTable1().get(0)
-				.getSpecification());
+		specification.setText(result.getTable1().get(0).getSpecification());
 		provider.setText(result.getTable1().get(0).getProvider());
-		procurementdate.setText(result.getTable1().get(0)
-				.getProcurementdate());
+		procurementdate.setText(result.getTable1().get(0).getProcurementdate());
 		batchnumbe.setText(result.getTable1().get(0).getBatchnumbe());
 		placementposition.setText(result.getTable1().get(0)
 				.getPlacementposition());
-		equipmenttype.setText(result.getTable1().get(0)
-				.getEquipmenttype());// 设备类型
-		superequipment.setText(result.getTable1().get(0)
-				.getSuperequipment());// 上级设备
+		equipmenttype.setText(result.getTable1().get(0).getEquipmenttype());// 设备类型
+		superequipment.setText(result.getTable1().get(0).getSuperequipment());// 上级设备
 		externaldimension.setText(result.getTable1().get(0)
 				.getExternaldimension());// 外观尺寸
 		weight.setText(result.getTable1().get(0).getWeight());// 重量
 		manufacture.setText(result.getTable1().get(0).getManufacture());// 制造商
 		factorycode.setText(result.getTable1().get(0).getFactorycode());// 出厂编码
-		produceddate.setText(result.getTable1().get(0)
-				.getProduceddate());// 生产日期
-		durableyears.setText(result.getTable1().get(0)
-				.getDurableyears());// 使用年限
+		produceddate.setText(result.getTable1().get(0).getProduceddate());// 生产日期
+		durableyears.setText(result.getTable1().get(0).getDurableyears());// 使用年限
 		maintechnicalparameters.setText(result.getTable1().get(0)
 				.getMaintechnicalparameters());// 主要技术参数
 		remark.setText(result.getTable1().get(0).getRemark());// 备注
-		equipmentstate.setText(result.getTable1().get(0)
-				.getEquipmentstate());// 设备状态
+		equipmentstate.setText(result.getTable1().get(0).getEquipmentstate());// 设备状态
 		modificationtime.setText(result.getTable1().get(0)
 				.getModificationtime());// 修改时间
-		listViewParts.setAdapter(new DetailListViewAdapter(result
-				.getTable2(), context));		
+		listViewParts.setAdapter(new DetailListViewAdapter(result.getTable2(),
+				context));
 	}
 
 	@Override
 	protected BaseProtocal<DetailListBean> createImplProtocal() {
+		// TODO 发布时删除
+		GlobalParams.hasData = true;
 		return new DetailProtocal();
 	}
 

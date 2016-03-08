@@ -15,48 +15,69 @@ import com.lidroid.xutils.http.callback.RequestCallBack;
 
 public class PDFViewActivity extends Activity {
 
-	PDFView pdfView;
+	private PDFView pdfView;
+	// private boolean exist = false;
+	// private File folder = null;
+	private String localPath;
+	private String fileUrl;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_pdf_view);
 		pdfView = (PDFView) findViewById(R.id.pdfView);
-		String fileUrl = getIntent().getStringExtra("url");
-		File folder = new File(Environment.getExternalStorageDirectory()
-				.getAbsolutePath()+"/QRcode_pdf_cache");
-		String filename = fileUrl.substring(fileUrl.lastIndexOf("/")+1);
-		boolean exist = false;
-		for (File f:folder.listFiles()) {
-			if(f.getName().equals(filename)){
-				loadPDF("/"+filename);
-				exist = true;
-				Log.e("exist", exist+"");
-				break;
-			}
+		fileUrl = getIntent().getStringExtra("url");
+
+		if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
+			// folder = new File(Environment.getExternalStorageDirectory()
+			// .getAbsolutePath() + "/QRcode_pdf_cache");
+			localPath = Environment.getExternalStorageDirectory()
+					.getAbsolutePath() + "/QRcode_pdf_cache";
+		} else {
+			// folder = new File(getCacheDir().getAbsolutePath()
+			// + "/QRcode_pdf_cache");
+			localPath = getCacheDir().getAbsolutePath() + "/QRcode_pdf_cache";
 		}
-		if(!exist){
-			download(fileUrl);
-		}
+		download(fileUrl, localPath);
+		// folder = new File(getCacheDir().getAbsolutePath() +
+		// "/QRcode_pdf_cache");
+		// String filename = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
+		// Log.e("Test", exist + "");
+		// if (folder.listFiles() != null) {
+		// for (File f : folder.listFiles()) {
+		// if (f.getName().equals(filename)) {
+		// exist = true;
+		// // loadPDF("/" + filename);
+		//
+		// Log.e("exist", exist + "");
+		// break;
+		// }
+		// }
+		// }
+		// if (exist) {
+		// loadPDF("/" + filename);
+		// } else {
+		//
+		// download(fileUrl);
+		// }
+		// Log.e("Test", exist + "");
 	}
 
-	public void loadPDF(String filename){
-		String path = Environment.getExternalStorageDirectory()
-				.getAbsolutePath()+"/QRcode_pdf_cache";
+	public void loadPDF(String filename) {
+		// String path = Environment.getExternalStorageDirectory()
+		// .getAbsolutePath() + "/QRcode_pdf_cache";
 
-		File f = new File(path+filename);
-		
-		pdfView.fromFile(f).defaultPage(1).showMinimap(true)
-				.enableSwipe(true).onLoad(null)
-				.onPageChange(null).enableDoubletap(true)
-				.load();
+		File f = new File(localPath + filename);
+
+		pdfView.fromFile(f).defaultPage(1).showMinimap(true).enableSwipe(true)
+				.onLoad(null).onPageChange(null).enableDoubletap(true).load();
 	}
-	public void download(String path) {
-		final String filename = path.substring(path.lastIndexOf("/"));
+
+	public void download(String urlPath, String localPath) {
+		final String filename = urlPath.substring(urlPath.lastIndexOf("/"));
 		HttpUtils http = new HttpUtils();
-		http.download(path, Environment.getExternalStorageDirectory()
-				.getAbsolutePath()+"/QRcode_pdf_cache" + filename, true, true,
+		http.download(urlPath, localPath + filename, true, true,
 				new RequestCallBack<File>() {
 
 					@Override
@@ -76,6 +97,13 @@ public class PDFViewActivity extends Activity {
 					public void onFailure(HttpException error, String msg) {
 						// tvInfo.setText(msg);
 						Log.e("download", "失败: " + msg);
+						// if
+						// (msg.equals("maybe the file has downloaded completely"))
+						// {
+						//
+						// loadPDF("/" + filename);
+						// }
+						loadPDF(filename);
 					}
 
 					@Override

@@ -45,17 +45,21 @@ public class EquipmentFragment extends BaseFragment<EquipmentListBean> {
 		return view;
 	}
 
-	protected EquipmentListBean doInBackground(String... params) {
-		SystemClock.sleep(500);
-		EquipmentListBean equipmentListBean = new EquipmentListBean();
-		equipmentListBean.setTestData();
-		return equipmentListBean;
-	}
+	// protected EquipmentListBean doInBackground(String... params) {
+	// SystemClock.sleep(500);
+	// EquipmentListBean equipmentListBean = new EquipmentListBean();
+	// equipmentListBean.setTestData();
+	// return equipmentListBean;
+	// }
 
 	private void getAllData() {
 
 		currentAllParent.clear();
 		zx_ll_path.removeAllViews();
+		TextView tvHead = new TextView(context);
+		tvHead.setText("路径：");
+		zx_ll_path.addView(tvHead, new LinearLayout.LayoutParams(
+				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 		Helper.getAllParent(currentAllParent, currentNode);
 		Collections.reverse(currentAllParent);
 		for (int i = 0; i < currentAllParent.size(); i++) {
@@ -116,6 +120,8 @@ public class EquipmentFragment extends BaseFragment<EquipmentListBean> {
 
 	@Override
 	protected BaseProtocal<EquipmentListBean> createImplProtocal() {
+		// TODO 发布时删除
+		GlobalParams.hasData = false;
 		return new EquipmentProtocal();
 	}
 

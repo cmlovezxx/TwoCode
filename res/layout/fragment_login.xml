@@ -1,133 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:background="@drawable/login7"
+    android:orientation="vertical" >
 
-    <ScrollView
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/login6logo" />
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white" >
+        android:orientation="vertical" >
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical" >
 
-            <!-- 提示内容 -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="23dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/login5name" />
+
+            <TextView
+                android:layout_width="70dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="right"
+                android:singleLine="true"
+                android:text="@string/zx_tv_username"
+                android:textColor="@color/black_slight" />
 
             <LinearLayout
-                android:id="@+id/view_1"
-                android:layout_width="fill_parent"
+                android:layout_width="180dip"
                 android:layout_height="wrap_content"
-                android:background="@drawable/id_login_bg_1"
-                android:gravity="center_vertical"
-                android:orientation="vertical" >
+                android:layout_marginLeft="15dip"
+                android:orientation="horizontal" >
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
+                <EditText
+                    android:id="@+id/zx_user_login_username"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dip" >
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:text="111" />
 
-                    <TextView
-                        android:layout_width="65dip"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="15dip"
-                        android:gravity="right"
-                        android:text="@string/is_username"
-                        android:textColor="@color/black_slight" />
-                    <!-- 用户名 -->
-
-                    <LinearLayout
-                        android:layout_width="180dip"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dip"
-                        android:background="@android:drawable/edit_text" >
-
-                        <EditText
-                            android:id="@+id/zx_user_login_username"
-                            android:layout_width="140dip"
-                            android:layout_height="wrap_content"
-                            android:background="@null"
-                            android:inputType="number"
-                            android:singleLine="true"
-                            android:text="111" />
-                        <!-- 便于开发      android:text="13200000000" -->
-
-                        <ImageView
-                            android:id="@+id/zx_clear"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="4dip"
-                            android:src="@drawable/id_clear_button"
-                            android:visibility="invisible" />
-                    </LinearLayout>
-                </LinearLayout>
-                <!-- 密码 -->
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
+                <ImageView
+                    android:id="@+id/zx_clear"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dip" >
-
-                    <TextView
-                        android:layout_width="65dip"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="15dip"
-                        android:gravity="right"
-                        android:text="@string/is_regist_password"
-                        android:textColor="@color/black_slight" />
-
-                    <EditText
-                        android:id="@+id/zx_user_login_password"
-                        android:layout_width="180dip"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dip"
-                        android:password="true"
-                        android:singleLine="true"
-                        android:text="111" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dip" >
-
-                    <CheckBox
-                        android:id="@+id/zx_user_login_auto_login"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dip" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dip"
-                        android:text="@string/is_auto_login"
-                        android:textColor="@color/black_slight" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dip"
-                    android:gravity="center_horizontal" >
-
-                    <Button
-                        android:id="@+id/zx_user_login"
-                        android:layout_width="100dip"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dip"
-                        android:background="@drawable/id_login_login" />
-                </LinearLayout>
-                <!-- 友好提示 -->
-
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="4dip"
+                    android:src="@drawable/id_clear_button"
+                    android:visibility="invisible" />
             </LinearLayout>
-            <!-- 客服电话 -->
+        </LinearLayout>
 
-         
-        </RelativeLayout>
-    </ScrollView>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login3" />
 
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:gravity="center_vertical" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="23dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/login4password" />
+
+            <TextView
+                android:layout_width="70dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="right"
+                android:singleLine="true"
+                android:text="@string/zx_tv_regist_password"
+                android:textColor="@color/black_slight" />
+
+            <EditText
+                android:id="@+id/zx_user_login_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:layout_weight="1"
+                android:background="@null"
+                android:password="true"
+                android:singleLine="true"
+                android:text="111" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip" >
+
+            <CheckBox
+                android:id="@+id/zx_user_login_auto_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:text="@string/zx_tv_auto_login"
+                android:textColor="@color/black_slight" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal" >
+
+            <Button
+                android:id="@+id/zx_user_login"
+                android:layout_width="258dp"
+                android:layout_height="54dp"
+                android:background="@drawable/login2" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

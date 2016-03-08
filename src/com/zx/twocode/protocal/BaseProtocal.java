@@ -1,40 +1,55 @@
 package com.zx.twocode.protocal;
 
+import com.zx.twocode.global.GlobalParams;
 import com.zx.twocode.http.HttpHelper;
 import com.zx.twocode.http.HttpHelper.HttpResult;
 
 public abstract class BaseProtocal<T> {
 	// 1.load(String)方法
 	public T load(String... params) {
-
-		// 方法中首先加载服务器，loadServer
-		String json = loadServer(params);
-		// 其次解析json
-		if (json != null) {
-			return paserJson(json);
+//		// 方法中首先加载服务器，loadServer
+//		String json = loadServer(params);
+//		// 其次解析json
+//		if (json != null) {
+//			return paserJson(json);
+//		}
+//		
+//		return null;
+// TODO 测试用，发布删掉
+		if (GlobalParams.hasData) {
+			String json = loadServer(params);
+			// 其次解析json
+			if (json != null) {
+				return paserJson(json);
+			}
+		} else {
+			return paserData();
 		}
+//删掉到此
 		return null;
-		
 	}
 
-	
+	/**
+	 * 假数据放在这个抽象方法里，发布时删掉
+	 * 
+	 * @return
+	 */
+	public abstract T paserData();
+
 	// 解析json需要子类根据自己的数据解析
 	public abstract T paserJson(String json);
 
 	private String loadServer(String... params) {
 
-		
 		HttpResult httpResult = HttpHelper.get(HttpHelper.URL
 				+ getRequestParams(params));
-		if(httpResult == null)
+		if (httpResult == null)
 			return null;
 		String json = httpResult.getString();
 		return json;
 	}
 
-
-
-	//得到请求参数，并且形成一个例如?requestcode=003&equipmentcode=EHS-6000012的请求
+	// 得到请求参数，并且形成一个例如?requestcode=003&equipmentcode=EHS-6000012的请求
 	private String getRequestParams(String... params) {
 		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < params.length - 1; i += 2) {

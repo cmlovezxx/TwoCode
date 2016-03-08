@@ -1,30 +1,34 @@
 package com.zx.twocode.fragment.impl;
 
 import com.zx.twocode.fragment.BaseFragment;
+import com.zx.twocode.global.GlobalParams;
 import com.zx.twocode.protocal.BaseProtocal;
+import com.zx.twocode.protocal.MyProtocal;
 
 import android.app.Fragment;
 import android.view.View;
 import android.widget.TextView;
 
-public class MyFragment extends BaseFragment<String>{
+public class MyFragment extends BaseFragment<String> {
 
 	@Override
 	public View createView() {
-		// TODO Auto-generated method stub
-		return null;
+
+		TextView tv = new TextView(context);
+		tv.setText("我的界面");
+		return tv;
 	}
 
 	@Override
 	protected void setView(String result) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	protected BaseProtocal<String> createImplProtocal() {
-		// TODO Auto-generated method stub
-		return null;
+		GlobalParams.hasData = false;
+		return new MyProtocal();
 	}
 
 	@Override
@@ -33,5 +37,4 @@ public class MyFragment extends BaseFragment<String>{
 		return null;
 	}
 
-	
 }

@@ -1,9 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/activity_main"
     tools:context=".MainActivity" >
 
     <LinearLayout
@@ -20,14 +20,14 @@
             android:padding="10dp" />
 
         <EditText
-            android:hint="请输入设备名称"
             android:id="@+id/et_search"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:imeOptions="actionDone"
-            android:singleLine="true"
             android:layout_marginLeft="20dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:hint="请输入设备名称"
+            android:imeOptions="actionDone"
+            android:singleLine="true" />
 
         <ImageButton
             android:id="@+id/search"
@@ -55,28 +55,28 @@
             style="@style/BottomTabStyle"
             android:layout_weight="1"
             android:drawableTop="@drawable/btn_tab_home_selector"
-            android:text="详细信息" />
+            android:text="@string/zx_rv_detailinfo" />
 
         <RadioButton
             android:id="@+id/rb2"
             style="@style/BottomTabStyle"
             android:layout_weight="1"
             android:drawableTop="@drawable/btn_tab_news_selector"
-            android:text="设备目录" />
+            android:text="@string/zx_rv_equipmentinfo" />
 
         <RadioButton
             android:id="@+id/rb3"
             style="@style/BottomTabStyle"
             android:layout_weight="1"
             android:drawableTop="@drawable/btn_tab_smart_selector"
-            android:text="文档目录" />
+            android:text="@string/zx_rv_documentinfo" />
 
         <RadioButton
             android:id="@+id/rb4"
             style="@style/BottomTabStyle"
             android:layout_weight="1"
             android:drawableTop="@drawable/btn_tab_gov_selector"
-            android:text="我的" />
+            android:text="@string/zx_rv_myinfo" />
 
         <RadioButton
             android:id="@+id/rb5"

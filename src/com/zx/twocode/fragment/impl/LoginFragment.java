@@ -120,7 +120,7 @@ public class LoginFragment extends BaseFragment<String> {
 	@Override
 	protected void setView(String result) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import com.zx.twocode.R;
+import com.zx.twocode.view.WaitingDialog;
 
 /**
  * 提示信息的管理
@@ -20,15 +21,22 @@ public class PromptManager {
 	private static ProgressDialog dialog;
 
 	public static void showProgressDialog(Context context) {
-		dialog = new ProgressDialog(context);
-		dialog.setIcon(R.drawable.icon);
-		dialog.setTitle(R.string.app_name);
+		dialog = new WaitingDialog(context);
 
-		dialog.setMessage("请等候，数据加载中……");
 		dialog.show();
 		dialog.setCanceledOnTouchOutside(false);
 	}
 
+	// public static void showProgressDialog(Context context) {
+	// dialog = new ProgressDialog(context);
+	// // dialog.setIndeterminateDrawable();
+	// // dialog.setIcon(R.drawable.icon);
+	// // dialog.setTitle(R.string.app_name);
+	//
+	// // dialog.setMessage("请等候，数据加载中……");
+	// dialog.show();
+	// dialog.setCanceledOnTouchOutside(false);
+	// }
 	public static void closeProgressDialog() {
 		if (dialog != null && dialog.isShowing()) {
 			dialog.dismiss();
@@ -118,7 +126,6 @@ public class PromptManager {
 				.show();
 	}
 
-	
 	public static void showToast(Context context, String msg) {
 		Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
 	}

@@ -1,8 +1,10 @@
 package com.zx.twocode.global;
 
-import com.zx.twocode.bean.Node;
 
 public class GlobalParams {
+	
+	// TODO 发布时删掉此处
+	public static  boolean hasData = false;
 	/**
 	 * 代理的ip
 	 */

@@ -13,7 +13,6 @@ import com.zx.twocode.protocal.BasicProtocal;
 
 public class BasicFragment extends BaseFragment<BasicListBean> {
 
-	
 	private TextView equipmentcode;
 	private TextView equipmentname;
 	private TextView trademark;
@@ -26,7 +25,7 @@ public class BasicFragment extends BaseFragment<BasicListBean> {
 
 	@Override
 	public View createView() {
-		
+
 		View view = View.inflate(context, R.layout.fragment_basic, null);
 
 		equipmentcode = (TextView) view.findViewById(R.id.zx_tv_equipmentcode);
@@ -66,25 +65,22 @@ public class BasicFragment extends BaseFragment<BasicListBean> {
 
 	@Override
 	protected void setView(BasicListBean result) {
-		equipmentcode.setText(result.getData().get(0)
-				.getEquipmentcode());
-		equipmentname.setText(result.getData().get(0)
-				.getEquipmentname());
+		equipmentcode.setText(result.getData().get(0).getEquipmentcode());
+		equipmentname.setText(result.getData().get(0).getEquipmentname());
 		trademark.setText(result.getData().get(0).getTrademark());
 		type.setText(result.getData().get(0).getType());
-		specification.setText(result.getData().get(0)
-				.getSpecification());
+		specification.setText(result.getData().get(0).getSpecification());
 		provider.setText(result.getData().get(0).getProvider());
-		procurementdate.setText(result.getData().get(0)
-				.getProcurementdate());
-		batchnumber
-				.setText(result.getData().get(0).getBatchnumbe());
+		procurementdate.setText(result.getData().get(0).getProcurementdate());
+		batchnumber.setText(result.getData().get(0).getBatchnumbe());
 		placementposition.setText(result.getData().get(0)
 				.getPlacementposition());
 	}
 
 	@Override
 	protected BaseProtocal<BasicListBean> createImplProtocal() {
+		// TODO 发布时删除
+		GlobalParams.hasData = true;
 		return new BasicProtocal();
 	}
 

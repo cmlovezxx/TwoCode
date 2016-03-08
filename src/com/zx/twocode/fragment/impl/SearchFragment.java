@@ -27,7 +27,6 @@ public class SearchFragment extends BaseFragment<SearchListBean> {
 		return view;
 	}
 
-
 	@Override
 	protected String[] getParams() {
 		// TODO 需要填写请求信息
@@ -38,25 +37,26 @@ public class SearchFragment extends BaseFragment<SearchListBean> {
 	@Override
 	protected void setView(SearchListBean result) {
 		// TODO Auto-generated method stub
-		listViewSearch.setAdapter(new SearchListViewAdapter(result
-				.getTable1(), context));
-		listViewSearch
-				.setOnItemClickListener(new OnItemClickListener() {
+		listViewSearch.setAdapter(new SearchListViewAdapter(result.getTable1(),
+				context));
+		listViewSearch.setOnItemClickListener(new OnItemClickListener() {
 
-					@Override
-					public void onItemClick(AdapterView<?> arg0,
-							View arg1, int arg2, long arg3) {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
 
-						// 点击要搜索的条目后跳转到基本信息界面
-						GlobalParams.isFirst = false;
-						MiddleUIManager.getInstance().ChangeUI(
-								ConstantValue.BASIC_INFO);
-					}
-				});
+				// 点击要搜索的条目后跳转到基本信息界面
+				GlobalParams.isFirst = false;
+				MiddleUIManager.getInstance()
+						.ChangeUI(ConstantValue.BASIC_INFO);
+			}
+		});
 	}
 
 	@Override
 	protected BaseProtocal<SearchListBean> createImplProtocal() {
+		// TODO 发布时删除
+		GlobalParams.hasData = false;
 		return new SearchProtocal();
 	}
 

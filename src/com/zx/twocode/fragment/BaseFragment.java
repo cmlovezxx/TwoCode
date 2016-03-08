@@ -65,7 +65,7 @@ public abstract class BaseFragment<Params> extends Fragment implements
 
 			@Override
 			protected BaseProtocal<Params> createProtocal() {
-				
+
 				return createImplProtocal();
 			}
 
@@ -87,7 +87,6 @@ public abstract class BaseFragment<Params> extends Fragment implements
 	// TODO 异步加载框架 读取网络 获取数据
 	protected abstract class MyHttpTask<Params> extends
 			AsyncTask<String, Void, Params> {
-		private BaseProtocal<Params> protocal;
 
 		/**
 		 * 刷新界面信息在这个方法中进行
@@ -96,10 +95,12 @@ public abstract class BaseFragment<Params> extends Fragment implements
 		 */
 		protected abstract void setViewInfo(Params result);
 
+		@Override
 		protected Params doInBackground(String... params) {
-			SystemClock.sleep(500);
-			protocal = createProtocal();
+			SystemClock.sleep(300);
+			BaseProtocal<Params> protocal = createProtocal();
 			Params result = protocal.load(params);
+			// Params result = protocal.paserData();
 			return result;
 		}
 
@@ -128,13 +129,11 @@ public abstract class BaseFragment<Params> extends Fragment implements
 									@Override
 									public void onClick(DialogInterface dialog,
 											int which) {
-//										PromptManager
-//												.showProgressDialog(context);
+										// PromptManager
+										// .showProgressDialog(context);
 										refreshView();
 									}
-								})
-						.show()
-						.setCanceledOnTouchOutside(false);
+								}).show().setCanceledOnTouchOutside(false);
 			}
 		}
 
