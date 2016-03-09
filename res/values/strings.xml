@@ -39,7 +39,7 @@
     <!-- 重量 -->
     <string name="zx_tv_weight">Weight:</string>
     <!-- 制造商 -->
-    <string name="zx_tv_produ1cer">Produ1cer:</string>
+    <string name="zx_tv_producer">Producer:</string>
     <!-- 出厂编码 -->
     <string name="zx_tv_production_code">Production code:</string>
     <!-- 生产日期 -->
@@ -55,7 +55,9 @@
     <!-- 修改时间 -->
     <string name="zx_tv_modification_time">Modification time:</string>
     <!-- 零件列表 -->
-    <string name="zx_tv_component_list">Component list:</string>
+    <string name="zx_tv_component_list">Component:</string>
+    <!-- 详细信息列表 -->
+    <string name="zx_tv_detail_list">Detail:</string>
     <!-- 零件名称 -->
     <string name="zx_tv_component_name">Component name:</string>
     <!-- 零件所属设备 -->
@@ -65,5 +67,7 @@
     <!-- 数量 -->
     <string name="zx_tv_number">Amount:</string>
     <string name="zx_tv_document_path">Document path:</string>
+    <string name="zx_bn_cancel">Cancel</string>
+    <string name="zx_bn_settings">Settings</string>
 
 </resources>

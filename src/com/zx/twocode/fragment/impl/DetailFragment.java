@@ -53,7 +53,7 @@ public class DetailFragment extends BaseFragment<DetailListBean> {
 		specification = (TextView) view.findViewById(R.id.zx_tv_specification);// 规格
 		trademark = (TextView) view.findViewById(R.id.zx_tv_trademark);// 品牌
 		type = (TextView) view.findViewById(R.id.zx_tv_type);// 型号
-		batchnumbe = (TextView) view.findViewById(R.id.zx_tv_batchnumbe);// 批次号
+		batchnumbe = (TextView) view.findViewById(R.id.zx_tv_batchnumber);// 批次号
 		equipmenttype = (TextView) view.findViewById(R.id.zx_tv_equipmenttype);// 设备类型
 		superequipment = (TextView) view
 				.findViewById(R.id.zx_tv_superequipment);// 上级设备

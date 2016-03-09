@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.view.View;
 import android.widget.Toast;
 
 import com.zx.twocode.R;
@@ -48,22 +49,26 @@ public class PromptManager {
 	 * 
 	 * @param context
 	 */
+
 	public static void showNoNetWork(final Context context) {
-		AlertDialog.Builder builder = new Builder(context);
-		builder
-		//
-		.setTitle(R.string.app_name)
-				//
-				.setMessage("当前无网络")
-				.setPositiveButton("设置", new OnClickListener() {
+		final AlertDialog alertDialog = new Builder(context).create();
+		alertDialog.show();
+		alertDialog.setCanceledOnTouchOutside(false);
+		alertDialog.getWindow().setContentView(R.layout.no_network);
+		alertDialog.getWindow().findViewById(R.id.zx_bn_cancel)
+				.setOnClickListener(new View.OnClickListener() {
 
 					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						// 跳转到系统的网络设置界面
+					public void onClick(View v) {
+						alertDialog.dismiss();
+					}
+				});
+		alertDialog.getWindow().findViewById(R.id.zx_bn_known)
+				.setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
 						Intent intent = null;
-						// intent.setClassName("com.android.settings",
-						// "com.android.settings.WirelessSettings");
-						// context.startActivity(intent);
 
 						if (android.os.Build.VERSION.SDK_INT > 10) {
 							intent = new Intent(
@@ -77,10 +82,43 @@ public class PromptManager {
 							intent.setAction("android.intent.action.VIEW");
 						}
 						context.startActivity(intent);
-
 					}
-				}).setNegativeButton("知道了", null).show();
+				});
 	}
+
+	// public static void showNoNetWork(final Context context) {
+	// AlertDialog.Builder builder = new Builder(context);
+	// builder
+	// //
+	// .setTitle(R.string.app_name)
+	// //
+	// .setMessage("当前无网络")
+	// .setPositiveButton("设置", new OnClickListener() {
+	//
+	// @Override
+	// public void onClick(DialogInterface dialog, int which) {
+	// // 跳转到系统的网络设置界面
+	// Intent intent = null;
+	// // intent.setClassName("com.android.settings",
+	// // "com.android.settings.WirelessSettings");
+	// // context.startActivity(intent);
+	//
+	// if (android.os.Build.VERSION.SDK_INT > 10) {
+	// intent = new Intent(
+	// android.provider.Settings.ACTION_SETTINGS);
+	// } else {
+	// intent = new Intent();
+	// ComponentName component = new ComponentName(
+	// "com.android.settings",
+	// "com.android.settings.WirelessSettings");
+	// intent.setComponent(component);
+	// intent.setAction("android.intent.action.VIEW");
+	// }
+	// context.startActivity(intent);
+	//
+	// }
+	// }).setNegativeButton("知道了", null).show();
+	// }
 
 	/**
 	 * 退出系统
