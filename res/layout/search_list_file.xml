@@ -10,60 +10,103 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
-        <TextView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/zx_tv_equipment_code" />
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/search" />
 
-        <TextView
-            android:id="@+id/zx_tv_equipmentcode"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="23dp"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="@string/zx_tv_equipment_name"
+                    android:textColor="#104678"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/zx_tv_equipmentname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/zx_tv_equipment_code"
+                    android:textColor="#104678"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/zx_tv_equipmentcode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/zx_tv_equipment_category"
+                    android:textColor="#104678"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/zx_tv_equipmenttype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/zx_tv_location"
+                    android:textColor="#104678"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/zx_tv_placementposition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="325dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/zx_tv_equipment_name" />
-
-        <TextView
-            android:id="@+id/zx_tv_equipmentname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-  <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/zx_tv_equipment_category" />
-    <TextView
-        android:id="@+id/zx_tv_equipmenttype"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
- </LinearLayout>
- <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/zx_tv_location" />
-    <TextView
-        android:id="@+id/zx_tv_placementposition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
- </LinearLayout>
-  
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/search11" />
 
 </LinearLayout>

@@ -33,7 +33,9 @@
                 android:layout_marginLeft="20dp"
                 android:background="@null"
                 android:imeOptions="actionDone"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:hint="@string/search"
+                android:textColor="@color/textcolor_login" />
 
             <ImageView
                 android:layout_width="match_parent"

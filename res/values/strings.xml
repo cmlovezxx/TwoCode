@@ -15,6 +15,7 @@
     <string name="zx_rv_myinfo">My</string>
     <string name="zx_tv_equipment_code">Equipment code:</string>
     <string name="zx_tv_equipment_name">Equipment name:</string>
+    <string name="search">search</string>
     <!-- 品牌 -->
     <string name="zx_tv_brand">Brand:</string>
     <!-- 型号 -->
@@ -59,7 +60,7 @@
     <string name="zx_tv_component_name">Component name:</string>
     <!-- 零件所属设备 -->
     <string name="zx_tv_subordinate_equipment">Subordinate equipment:</string>
-	<!-- 材质 -->
+    <!-- 材质 -->
     <string name="zx_tv_material">Material:</string>
     <!-- 数量 -->
     <string name="zx_tv_number">Amount:</string>
