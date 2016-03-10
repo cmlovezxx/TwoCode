@@ -2,5 +2,7 @@
 <resources>
 
     <color name="textcolor_login">#8ac1a2</color>
+    <color name="textcolor_small">#104678</color>
+    <color name="list_item_click">#ffffff</color>
 
 </resources>

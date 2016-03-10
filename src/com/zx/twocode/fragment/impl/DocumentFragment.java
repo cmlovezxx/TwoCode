@@ -6,6 +6,7 @@ import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import com.zx.twocode.protocal.DocumentProtocal;
 public class DocumentFragment extends BaseFragment<DocumentListBean> {
 	private TextView equipmentName;
 	private TextView currentDirectory;
+//	private ImageView doc_list_icon;
 	// private ListView docList;
 	private ExpandableListView docListView;
 
@@ -100,11 +102,15 @@ public class DocumentFragment extends BaseFragment<DocumentListBean> {
 		equipmentName.setText(result.getEquipmentname());
 		DocListviewAdapter docAdapter = new DocListviewAdapter(context, result);
 		docListView.setGroupIndicator(null);
+		docListView.setSelector(R.color.list_item_click);
+		docListView.setCacheColorHint(R.color.list_item_click);
+		docListView.setDividerHeight(0);
 		docListView.setAdapter(docAdapter);
 		docListView.setOnGroupExpandListener(new OnGroupExpandListener() {
 
 			@Override
 			public void onGroupExpand(int groupPosition) {
+
 				currentDirectory.setText(result.getDocumentList()
 						.get(groupPosition).getFolderName());
 			}

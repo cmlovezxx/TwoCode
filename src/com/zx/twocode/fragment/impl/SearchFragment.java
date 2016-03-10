@@ -1,5 +1,6 @@
 package com.zx.twocode.fragment.impl;
 
+import android.graphics.Color;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -39,6 +40,9 @@ public class SearchFragment extends BaseFragment<SearchListBean> {
 		// TODO Auto-generated method stub
 		listViewSearch.setAdapter(new SearchListViewAdapter(result.getTable1(),
 				context));
+		listViewSearch.setSelector(R.color.list_item_click);
+		listViewSearch.setCacheColorHint(R.color.list_item_click);
+		listViewSearch.setDividerHeight(0);
 		listViewSearch.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override

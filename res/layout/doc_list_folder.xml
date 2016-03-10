@@ -1,36 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:minHeight="40dip" >
-
-    <ImageView
-        android:id="@+id/doc_list_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="20dp"
-        android:src="@drawable/tree_ec" />
-
-    <TextView
-        android:id="@+id/doc_list_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="30dp"
-        android:text="@string/app_name"
-        android:textSize="15sp" />
+    android:layout_height="wrap_content" >
 
     <ImageView
         android:id="@+id/doc_list_arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="20dp"
-        android:src="@drawable/tree_ec" />
+        android:layout_below="@+id/doc_list_icon"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@+id/doc_list_icon" />
 
-    
+    <ImageView
+        android:id="@+id/doc_list_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/document" />
+
+    <TextView
+        android:id="@+id/doc_list_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/doc_list_arrow"
+        android:layout_below="@+id/doc_list_icon"
+        android:text="haohao"
+        android:textColor="#104678"
+        android:textSize="15sp" />
 
 </RelativeLayout>

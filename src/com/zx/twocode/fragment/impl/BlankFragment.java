@@ -1,17 +1,10 @@
 package com.zx.twocode.fragment.impl;
 
 import android.view.View;
-import android.widget.TextView;
 
 import com.zx.twocode.R;
-import com.zx.twocode.bean.BasicListBean;
 import com.zx.twocode.fragment.BaseFragment;
-import com.zx.twocode.global.GlobalParams;
-import com.zx.twocode.manager.MiddleUIManager;
 import com.zx.twocode.protocal.BaseProtocal;
-import com.zx.twocode.protocal.BasicProtocal;
-import com.zx.twocode.protocal.BlankProtocal;
-import com.zx.twocode.protocal.MyProtocal;
 
 public class BlankFragment extends BaseFragment<String> {
 
@@ -29,9 +22,15 @@ public class BlankFragment extends BaseFragment<String> {
 	}
 
 	@Override
+	public void refreshView() {
+
+	}
+
+	@Override
 	protected BaseProtocal<String> createImplProtocal() {
-		GlobalParams.hasData = false;
-		return new BlankProtocal();
+		// GlobalParams.hasData = false;
+		// return new BlankProtocal();
+		return null;
 	}
 
 	@Override

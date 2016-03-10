@@ -27,6 +27,7 @@ public class DocListviewAdapter extends BaseExpandableListAdapter {
 
 	private final class GroupViewHolder {
 		TextView label;
+		ImageView doc_list_arrow;
 	}
 
 	private final class ChildViewHolder {
@@ -68,6 +69,7 @@ public class DocListviewAdapter extends BaseExpandableListAdapter {
 	@Override
 	public View getGroupView(int groupPosition, boolean isExpanded,
 			View convertView, ViewGroup parent) {
+
 		GroupViewHolder groupViewHolder;
 		if (convertView == null) {
 			convertView = View.inflate(context, R.layout.doc_list_folder, null);
@@ -75,6 +77,8 @@ public class DocListviewAdapter extends BaseExpandableListAdapter {
 
 			groupViewHolder.label = (TextView) convertView
 					.findViewById(R.id.doc_list_label);
+			groupViewHolder.doc_list_arrow = (ImageView) convertView
+					.findViewById(R.id.doc_list_arrow);
 
 			convertView.setTag(groupViewHolder);
 		} else {
@@ -83,7 +87,14 @@ public class DocListviewAdapter extends BaseExpandableListAdapter {
 
 		groupViewHolder.label.setText(docList.getDocumentList()
 				.get(groupPosition).getFolderName());
+		if (isExpanded) {
 
+			groupViewHolder.doc_list_arrow.setBackground(context.getResources()
+					.getDrawable(R.drawable.arrow_3));
+		} else {
+			groupViewHolder.doc_list_arrow.setBackground(context.getResources()
+					.getDrawable(R.drawable.arrow_1));
+		}
 		return convertView;
 	}
 
@@ -96,6 +107,7 @@ public class DocListviewAdapter extends BaseExpandableListAdapter {
 			childViewHolder = new ChildViewHolder();
 			childViewHolder.label = (TextView) convertView
 					.findViewById(R.id.doc_list_filename);
+
 			convertView.setTag(childViewHolder);
 		} else {
 			childViewHolder = (ChildViewHolder) convertView.getTag();
@@ -108,16 +120,13 @@ public class DocListviewAdapter extends BaseExpandableListAdapter {
 		return convertView;
 	}
 
-	
 	@Override
 	public boolean hasStableIds() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isChildSelectable(int groupPosition, int childPosition) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 

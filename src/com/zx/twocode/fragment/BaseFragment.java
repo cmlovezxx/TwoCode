@@ -2,6 +2,7 @@ package com.zx.twocode.fragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -117,23 +118,45 @@ public abstract class BaseFragment<Params> extends Fragment implements
 
 				setViewInfo(result);
 			} else {
-				new AlertDialog.Builder(context)
+				// new AlertDialog.Builder(context)
+				//
+				// .setTitle(R.string.app_name)
+				// .setMessage("获取数据失败，请重试")
+				// .setNegativeButton("取消", null)
+				// .setPositiveButton(
+				// "重试",
+				// new android.content.DialogInterface.OnClickListener() {
+				//
+				// @Override
+				// public void onClick(DialogInterface dialog,
+				// int which) {
+				// // PromptManager
+				// // .showProgressDialog(context);
+				// refreshView();
+				// }
+				// }).show().setCanceledOnTouchOutside(false);
 
-						.setTitle(R.string.app_name)
-						.setMessage("获取数据失败，请重试")
-						.setNegativeButton("取消", null)
-						.setPositiveButton(
-								"重试",
-								new android.content.DialogInterface.OnClickListener() {
+				final AlertDialog alertDialog = new Builder(context).create();
+				alertDialog.show();
+				alertDialog.setCanceledOnTouchOutside(false);
+				alertDialog.getWindow().setContentView(R.layout.server_busy);
+				alertDialog.getWindow().findViewById(R.id.zx_bn_cancel)
+						.setOnClickListener(new View.OnClickListener() {
 
-									@Override
-									public void onClick(DialogInterface dialog,
-											int which) {
-										// PromptManager
-										// .showProgressDialog(context);
-										refreshView();
-									}
-								}).show().setCanceledOnTouchOutside(false);
+							@Override
+							public void onClick(View v) {
+								alertDialog.dismiss();
+							}
+						});
+				alertDialog.getWindow().findViewById(R.id.zx_bn_retry)
+						.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+								refreshView();
+								alertDialog.dismiss();
+							}
+						});
 			}
 		}
 

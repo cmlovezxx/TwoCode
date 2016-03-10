@@ -126,28 +126,55 @@ public class PromptManager {
 	 * @param context
 	 */
 	public static void showExitSystem(Context context) {
-		AlertDialog.Builder builder = new Builder(context);
-		builder
-		//
-		.setTitle(R.string.app_name)
-				//
-				.setMessage("是否退出应用")
-				.setPositiveButton("确定", new OnClickListener() {
+		final AlertDialog alertDialog = new Builder(context).create();
+		alertDialog.show();
+		alertDialog.setCanceledOnTouchOutside(false);
+		alertDialog.getWindow().setContentView(R.layout.exit_system);
+		alertDialog.getWindow().findViewById(R.id.zx_bn_cancel)
+				.setOnClickListener(new View.OnClickListener() {
 
 					@Override
-					public void onClick(DialogInterface dialog, int which) {
+					public void onClick(View v) {
+						alertDialog.dismiss();
+					}
+				});
+		alertDialog.getWindow().findViewById(R.id.zx_bn_positive)
+				.setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
 						android.os.Process.killProcess(android.os.Process
 								.myPid());
 						// 多个Activity——懒人听书：没有彻底退出应用
 						// 将所有用到的Activity都存起来，获取全部，干掉
 						// BaseActivity——onCreated——放到容器中
 					}
-				})//
-				.setNegativeButton("取消", null)//
-				.show();
+				});
 
 	}
 
+	// public static void showExitSystem(Context context) {
+	// AlertDialog.Builder builder = new Builder(context);
+	// builder
+	// //
+	// .setTitle(R.string.app_name)
+	// //
+	// .setMessage("是否退出应用")
+	// .setPositiveButton("确定", new OnClickListener() {
+	//
+	// @Override
+	// public void onClick(DialogInterface dialog, int which) {
+	// android.os.Process.killProcess(android.os.Process
+	// .myPid());
+	// // 多个Activity——懒人听书：没有彻底退出应用
+	// // 将所有用到的Activity都存起来，获取全部，干掉
+	// // BaseActivity——onCreated——放到容器中
+	// }
+	// })//
+	// .setNegativeButton("取消", null)//
+	// .show();
+	//
+	// }
 	/**
 	 * 显示错误提示框
 	 * 

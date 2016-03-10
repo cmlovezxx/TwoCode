@@ -43,6 +43,8 @@ public class EquipmentListViewAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			holder.zx_tv_equipmentcode = (TextView) convertView
 					.findViewById(R.id.zx_tv_equipmentcode);
+			holder.zx_tv_equipmentname = (TextView) convertView
+					.findViewById(R.id.zx_tv_equipmentname);
 
 			convertView.setTag(holder);
 		} else {
@@ -50,12 +52,15 @@ public class EquipmentListViewAdapter extends BaseAdapter {
 		}
 
 		holder.zx_tv_equipmentcode.setText(node.getChildren().get(position)
+				.getId());
+		holder.zx_tv_equipmentname.setText(node.getChildren().get(position)
 				.getName());
 
 		return convertView;
 	}
 
 	class ViewHolder {
+		TextView zx_tv_equipmentname;
 		TextView zx_tv_equipmentcode;
 
 	}

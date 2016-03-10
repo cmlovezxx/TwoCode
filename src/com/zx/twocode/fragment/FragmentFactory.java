@@ -3,6 +3,8 @@ package com.zx.twocode.fragment;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.app.Fragment;
+
 import com.zx.twocode.fragment.impl.BasicFragment;
 import com.zx.twocode.fragment.impl.BlankFragment;
 import com.zx.twocode.fragment.impl.DetailFragment;
@@ -16,8 +18,10 @@ import com.zx.twocode.global.ConstantValue;
 public class FragmentFactory {
 
 	private static Map<Integer, BaseFragment> mFragments = new HashMap<Integer, BaseFragment>();
+	private static Map<Integer, Fragment> mNoNetFragments = new HashMap<Integer, Fragment>();
 
 	public static BaseFragment createFragment(int position) {
+
 		BaseFragment fragment = null;
 		fragment = mFragments.get(position); // �ڼ�����ȡ����Fragment
 		if (fragment == null) { // ����ټ�����û��ȡ���� ��Ҫ���´���

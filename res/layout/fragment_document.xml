@@ -2,45 +2,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="0dp"
     android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_marginTop="15dp"
+        android:background="@drawable/path"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/zx_tv_document_path"
-            android:textSize="15sp" />
+            android:textColor="@color/textcolor_login"
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/zx_tv_equipmentname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15sp" />
+            android:textColor="@color/textcolor_login"
+            android:textSize="10sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" / "
-            android:textSize="15sp" />
+            android:textColor="@color/textcolor_login"
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/zx_tv_currentdirectory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15sp" />
+            android:textColor="@color/textcolor_login"
+            android:textSize="10sp" />
     </LinearLayout>
 
     <ExpandableListView
         android:id="@+id/zx_lv_documentlist"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:divider="#aaa"
-        android:dividerHeight="1dp" >
+        android:choiceMode="singleChoice"
+        android:listSelector="#00000000" >
     </ExpandableListView>
 
 </LinearLayout>

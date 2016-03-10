@@ -1,10 +1,11 @@
 package com.zx.twocode.global;
 
+import com.zx.twocode.bean.CurrentEquipmentBean;
 
 public class GlobalParams {
-	
+
 	// TODO 发布时删掉此处
-	public static  boolean hasData = false;
+	public static boolean hasData = false;
 	/**
 	 * 代理的ip
 	 */
@@ -22,5 +23,7 @@ public class GlobalParams {
 	/**
 	 * 当前正操作的设备Node
 	 */
-	public static String currentEquipment = "10";
+	// public static String currentEquipment = "10";
+	public static CurrentEquipmentBean currentEquipmentBean = new CurrentEquipmentBean(
+			"10", "子目录4-2");
 }

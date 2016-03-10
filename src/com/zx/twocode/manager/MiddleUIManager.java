@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import com.zx.twocode.R;
 import com.zx.twocode.fragment.BaseFragment;
 import com.zx.twocode.fragment.FragmentFactory;
+import com.zx.twocode.global.ConstantValue;
 import com.zx.twocode.utils.PromptManager;
 import com.zx.twocode.view.MyViewPager;
 
@@ -52,7 +53,8 @@ public class MiddleUIManager {
 
 				BaseFragment fragment = (BaseFragment) FragmentFactory
 						.createFragment(position);
-				// 当切换界面时，重s新刷新界面
+
+				// 当切换界面时，重新刷新界面
 				fragment.refreshView();
 
 			}

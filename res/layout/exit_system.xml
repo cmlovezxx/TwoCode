@@ -6,27 +6,27 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/no_1" />
+        android:src="@drawable/exit" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
         <Button
-            android:id="@+id/zx_bn_cancel"
+            android:id="@+id/zx_bn_positive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/no_2"
-            android:text="@string/zx_bn_cancel"
+            android:text="@string/zx_bn_positive"
             android:textColor="#104678"
             android:textSize="10sp" />
 
         <Button
-            android:id="@+id/zx_bn_known"
+            android:id="@+id/zx_bn_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/no_3"
-            android:text="@string/zx_bn_settings"
+            android:text="@string/zx_bn_cancel"
             android:textColor="#104678"
             android:textSize="10sp" />
     </LinearLayout>

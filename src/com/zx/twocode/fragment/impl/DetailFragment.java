@@ -109,6 +109,9 @@ public class DetailFragment extends BaseFragment<DetailListBean> {
 				.getModificationtime());// 修改时间
 		listViewParts.setAdapter(new DetailListViewAdapter(result.getTable2(),
 				context));
+		listViewParts.setSelector(R.color.list_item_click);
+		listViewParts.setCacheColorHint(R.color.list_item_click);
+		listViewParts.setDividerHeight(0);
 	}
 
 	@Override

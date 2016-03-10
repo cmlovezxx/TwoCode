@@ -1,13 +1,10 @@
 package com.zx.twocode.fragment.impl;
 
-import com.zx.twocode.fragment.BaseFragment;
-import com.zx.twocode.global.GlobalParams;
-import com.zx.twocode.protocal.BaseProtocal;
-import com.zx.twocode.protocal.MyProtocal;
-
-import android.app.Fragment;
 import android.view.View;
 import android.widget.TextView;
+
+import com.zx.twocode.fragment.BaseFragment;
+import com.zx.twocode.protocal.BaseProtocal;
 
 public class MyFragment extends BaseFragment<String> {
 
@@ -20,20 +17,23 @@ public class MyFragment extends BaseFragment<String> {
 	}
 
 	@Override
+	public void refreshView() {
+	}
+
+	@Override
 	protected void setView(String result) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	protected BaseProtocal<String> createImplProtocal() {
-		GlobalParams.hasData = false;
-		return new MyProtocal();
+		// GlobalParams.hasData = false;
+		// return new MyProtocal();
+		return null;
 	}
 
 	@Override
 	protected String[] getParams() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
