@@ -30,10 +30,7 @@ public class MyFragment extends BaseFragment<String> {
 
 			@Override
 			public void onClick(View v) {
-				GlobalParams.isLogout = true;
-				MiddleUIManager.getInstance()
-						.ChangeUI(ConstantValue.LOGIN_INFO);
-				BottomUIMagager.getInstance().setAllCheckFalse();
+				PromptManager.showLogout(context);
 			}
 		});
 
@@ -42,6 +39,7 @@ public class MyFragment extends BaseFragment<String> {
 			@Override
 			public void onClick(View v) {
 				PromptManager.showExitSystem(context);
+				// android.os.Process.killProcess(android.os.Process.myPid());
 			}
 		});
 		return view;

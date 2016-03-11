@@ -12,6 +12,10 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.zx.twocode.R;
+import com.zx.twocode.global.ConstantValue;
+import com.zx.twocode.global.GlobalParams;
+import com.zx.twocode.manager.BottomUIMagager;
+import com.zx.twocode.manager.MiddleUIManager;
 import com.zx.twocode.view.WaitingDialog;
 
 /**
@@ -153,6 +157,39 @@ public class PromptManager {
 
 	}
 
+	/**
+	 * 注销
+	 * 
+	 * @param context
+	 */
+	public static void showLogout(Context context) {
+		final AlertDialog alertDialog = new Builder(context).create();
+		alertDialog.show();
+		alertDialog.setCanceledOnTouchOutside(false);
+		alertDialog.getWindow().setContentView(R.layout.logout);
+		alertDialog.getWindow().findViewById(R.id.zx_bn_cancel)
+				.setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						alertDialog.dismiss();
+					}
+				});
+		alertDialog.getWindow().findViewById(R.id.zx_bn_positive)
+				.setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						alertDialog.dismiss();
+						GlobalParams.isLogout = true;
+						MiddleUIManager.getInstance().ChangeUI(
+								ConstantValue.LOGIN_INFO);
+						BottomUIMagager.getInstance().setAllCheckFalse();
+					}
+				});
+
+	}
+
 	// public static void showExitSystem(Context context) {
 	// AlertDialog.Builder builder = new Builder(context);
 	// builder
@@ -182,13 +219,13 @@ public class PromptManager {
 	 * @param msg
 	 */
 	public static void showErrorDialog(Context context, String msg) {
-		new AlertDialog.Builder(context)//
+		new AlertDialog.Builder(context)
+
+		.setTitle(R.string.app_name)
+				.setMessage(msg)
 				//
-				.setTitle(R.string.app_name)//
-				.setMessage(msg)//
 				.setNegativeButton(context.getString(R.string.is_positive),
-						null)//
-				.show();
+						null).show();
 	}
 
 	public static void showToast(Context context, String msg) {
