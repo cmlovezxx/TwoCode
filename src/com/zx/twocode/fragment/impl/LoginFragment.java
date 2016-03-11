@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.zx.twocode.R;
 import com.zx.twocode.fragment.BaseFragment;
 import com.zx.twocode.global.ConstantValue;
+import com.zx.twocode.global.GlobalParams;
 import com.zx.twocode.manager.MiddleUIManager;
 import com.zx.twocode.manager.SharedPreferencesManager;
 import com.zx.twocode.protocal.BaseProtocal;
@@ -31,7 +32,8 @@ public class LoginFragment extends BaseFragment<String> {
 			login_username.setText("");
 			break;
 		case R.id.zx_user_login:
-
+//			服务器数据有了之后打开
+//			refreshView();
 			if (login_username.getText().toString() != null
 					|| login_password.getText().toString() != null) {
 				// 发送请求给服务器，验证登陆信息
@@ -57,11 +59,11 @@ public class LoginFragment extends BaseFragment<String> {
 					MiddleUIManager.getInstance().ChangeUI(
 							ConstantValue.BLANK_INFO);
 				} else {
-					Toast.makeText(context, "您的用户名和密码错误！", Toast.LENGTH_LONG)
+					Toast.makeText(context, "Invalid username or password！", Toast.LENGTH_LONG)
 							.show();
 				}
 			} else {
-				Toast.makeText(context, "您的用户名和密码不能为空！", Toast.LENGTH_LONG)
+				Toast.makeText(context, "Invalid username or password！", Toast.LENGTH_LONG)
 						.show();
 
 			}
@@ -109,6 +111,16 @@ public class LoginFragment extends BaseFragment<String> {
 		user_login.setOnClickListener(this);
 		login_auto_login.setChecked(false);
 		return view;
+	}
+
+	@Override
+	public void refreshView() {
+
+		if (!GlobalParams.isLogout) {
+			super.refreshView();
+		} else {
+			return;
+		}
 	}
 
 	@Override

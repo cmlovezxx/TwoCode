@@ -1,7 +1,7 @@
 package com.zx.twocode.fragment.impl;
 
-import android.os.SystemClock;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -12,8 +12,6 @@ import com.zx.twocode.fragment.BaseFragment;
 import com.zx.twocode.global.GlobalParams;
 import com.zx.twocode.protocal.BaseProtocal;
 import com.zx.twocode.protocal.DetailProtocal;
-import com.zx.twocode.utils.ContextUtil;
-import com.zx.twocode.utils.PromptManager;
 
 public class DetailFragment extends BaseFragment<DetailListBean> {
 	private TextView equipmentcode;// 设备编码
@@ -38,6 +36,7 @@ public class DetailFragment extends BaseFragment<DetailListBean> {
 	private TextView equipmentstate;// 设备状态
 	private TextView modificationtime;// 修改时间
 	private ListView listViewParts;
+	private LinearLayout zx_ll_component;
 
 	@Override
 	public View createView() {
@@ -71,6 +70,9 @@ public class DetailFragment extends BaseFragment<DetailListBean> {
 				.findViewById(R.id.zx_tv_equipmentstate);// 设备状态
 		modificationtime = (TextView) view
 				.findViewById(R.id.zx_tv_modificationtime);// 修改时间
+
+		zx_ll_component = (LinearLayout) view
+				.findViewById(R.id.zx_ll_component);
 		return view;
 	}
 
@@ -107,11 +109,17 @@ public class DetailFragment extends BaseFragment<DetailListBean> {
 		equipmentstate.setText(result.getTable1().get(0).getEquipmentstate());// 设备状态
 		modificationtime.setText(result.getTable1().get(0)
 				.getModificationtime());// 修改时间
-		listViewParts.setAdapter(new DetailListViewAdapter(result.getTable2(),
-				context));
+
 		listViewParts.setSelector(R.color.list_item_click);
 		listViewParts.setCacheColorHint(R.color.list_item_click);
 		listViewParts.setDividerHeight(0);
+		if (result.getTable2().size() <= 0 || result.getTable2() == null) {
+			zx_ll_component.setVisibility(View.GONE);
+		} else {
+			zx_ll_component.setVisibility(View.VISIBLE);
+			listViewParts.setAdapter(new DetailListViewAdapter(result
+					.getTable2(), context));
+		}
 	}
 
 	@Override

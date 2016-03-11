@@ -14,6 +14,8 @@
     <string name="zx_rv_documentinfo">Document</string>
     <string name="zx_rv_myinfo">My</string>
     <string name="zx_tv_equipment_code">Equipment code:</string>
+    <string name="zx_tv_version">Version info</string>
+    <string name="zx_tv_logout">Logout</string>
     <string name="zx_tv_equipment_name">Equipment name:</string>
     <string name="search">search</string>
     <!-- 品牌 -->

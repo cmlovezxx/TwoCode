@@ -78,7 +78,12 @@ public class EquipmentFragment extends BaseFragment<EquipmentListBean> {
 
 			tv.setTextColor(getResources().getColor(R.color.textcolor_login));
 			tv.setTextSize(10f);
-			tv.setText(currentAllParent.get(i).getName() + "/");
+			if (i == currentAllParent.size() - 1) {
+				tv.setText(currentAllParent.get(i).getName());
+			}else{
+				
+				tv.setText(currentAllParent.get(i).getName() + " / ");
+			}
 			tv.setTag(i);
 			tv.setOnClickListener(new OnClickListener() {
 
@@ -102,7 +107,7 @@ public class EquipmentFragment extends BaseFragment<EquipmentListBean> {
 		adapter = new EquipmentListViewAdapter(currentNode, context);
 
 		zx_lv_currentchild.setAdapter(adapter);
-		
+
 	}
 
 	@Override

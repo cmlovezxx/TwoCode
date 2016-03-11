@@ -26,11 +26,12 @@ import com.zx.twocode.utils.LogUtils;
 
 public class HttpHelper {
 
-	// public static final String URL =
-	// "http://192.168.8.125:6001/Switches.aspx?";
+	public static final String URL = "http://192.168.8.125:6001/Switches.aspx?";
+
 	// 外网地址
 	// http://218.24.232.66:99/Switches.aspx?requestcode=004
-	public static final String URL = "http://218.24.232.66:99/Switches.aspx?";
+	// public static final String URL =
+	// "http://218.24.232.66:99/Switches.aspx?";
 
 	/** get���󣬻�ȡ�����ַ������� */
 	public static HttpResult get(String url) {

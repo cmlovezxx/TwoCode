@@ -18,6 +18,10 @@ public class GlobalParams {
 	 * 判断是否是第一次进入程序
 	 */
 	public static boolean isFirst = true;
+/**
+ * 判断是否是注销过来的
+ */
+	public static boolean isLogout = false;
 
 	public static int number;
 	/**

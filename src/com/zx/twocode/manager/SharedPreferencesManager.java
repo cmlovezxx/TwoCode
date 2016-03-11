@@ -45,11 +45,13 @@ public class SharedPreferencesManager {
 			Editor editor = sp.edit();
 			editor.putLong("time", System.currentTimeMillis());
 			editor.commit();
-			MiddleUIManager.getInstance().ChangeUI(ConstantValue.BASIC_INFO);
+			MiddleUIManager.getInstance().ChangeUI(ConstantValue.BLANK_INFO);
 			ShowTopAndBottom(1);
 		} else {
-			Toast.makeText(activity, "您已经超过7天没有登陆了，请重新登陆！", Toast.LENGTH_SHORT)
-					.show();
+			Toast.makeText(
+					activity,
+					"You have not logged in for more than 7 days, please login again！",
+					Toast.LENGTH_SHORT).show();
 
 		}
 

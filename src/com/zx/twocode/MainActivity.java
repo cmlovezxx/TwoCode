@@ -39,16 +39,15 @@ public class MainActivity extends FragmentActivity {
 		}
 
 		SharedPreferencesManager.getInstance().setSp(this);
-		LinearLayout activity_main = (LinearLayout) findViewById(R.id.activity_main);  
-		activity_main.setOnTouchListener(new OnTouchListener()  
-		{  
-		              
-		    public boolean onTouch(View arg0, MotionEvent arg1)  
-		    {  
-		        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);  
-		        return imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);  
-		    }  
-		});   
+		LinearLayout activity_main = (LinearLayout) findViewById(R.id.activity_main);
+		activity_main.setOnTouchListener(new OnTouchListener() {
+
+			public boolean onTouch(View arg0, MotionEvent arg1) {
+				InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+				return imm.hideSoftInputFromWindow(getCurrentFocus()
+						.getWindowToken(), 0);
+			}
+		});
 	}
 
 	@Override
@@ -102,19 +101,18 @@ public class MainActivity extends FragmentActivity {
 		return false;
 	}
 
-
 	/**
 	 * 返回健
 	 */
 	@Override
 	public void onBackPressed() {
 		// super.onBackPressed();
-		if (MiddleUIManager.getInstance().getVp().getCurrentItem() == ConstantValue.BASIC_INFO
+		if (MiddleUIManager.getInstance().getVp().getCurrentItem() == ConstantValue.BLANK_INFO
 				|| MiddleUIManager.getInstance().getVp().getCurrentItem() == ConstantValue.LOGIN_INFO) {
 			PromptManager.showExitSystem(this);
 
 		} else {
-			MiddleUIManager.getInstance().ChangeUI(ConstantValue.BASIC_INFO);
+			MiddleUIManager.getInstance().ChangeUI(ConstantValue.BLANK_INFO);
 			BottomUIMagager.getInstance().setAllCheckFalse();
 
 		}
