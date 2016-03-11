@@ -68,7 +68,7 @@
     <string name="zx_tv_material">Material:</string>
     <!-- 数量 -->
     <string name="zx_tv_number">Amount:</string>
-    <string name="zx_tv_document_path">Document path:</string>
+    <string name="zx_tv_document_path">Path:</string>
     <string name="zx_bn_cancel">Cancel</string>
     <string name="zx_bn_positive">Ok</string>
     <string name="zx_bn_retry">Retry</string>
