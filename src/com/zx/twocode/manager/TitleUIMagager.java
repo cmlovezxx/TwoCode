@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 
 import com.zx.twocode.R;
 import com.zx.twocode.global.ConstantValue;
-import com.zx.twocode.global.GlobalParams;
 import com.zxing.activity.CaptureActivity;
 
 public class TitleUIMagager {
@@ -51,7 +50,7 @@ public class TitleUIMagager {
 
 			@Override
 			public void onClick(View v) {
-				// TODO 跳转到扫描二维码的界面
+				// TODO 璺宠浆鍒版壂鎻忎簩缁寸爜鐨勭晫闈�
 				Intent i = new Intent(activity, CaptureActivity.class);
 				activity.startActivityForResult(i, 0);
 
@@ -74,7 +73,7 @@ public class TitleUIMagager {
 
 			@Override
 			public void onClick(View v) {
-				// TODO 根据edittext的内容，请求服务器后，跳转到搜索页面。
+				// TODO 鏍规嵁edittext鐨勫唴瀹癸紝璇锋眰鏈嶅姟鍣ㄥ悗锛岃烦杞埌鎼滅储椤甸潰銆�
 				// GlobalParams.isFirst = false;
 				BottomUIMagager.getInstance().setAllCheckFalse();
 				MiddleUIManager.getInstance().ChangeUI(

@@ -3,7 +3,6 @@ package com.zx.twocode.fragment;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
-import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -21,7 +20,6 @@ import com.zx.twocode.utils.PromptManager;
 
 public abstract class BaseFragment<Params> extends Fragment implements
 		OnClickListener {
-
 	private View view;
 	protected FragmentActivity context;
 
