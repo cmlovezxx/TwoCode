@@ -4,37 +4,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchListBean {
-	private List<SearchBean> Table1 = new ArrayList<SearchBean>();
+	private List<SearchBean> SouSuoJieGuo = new ArrayList<SearchBean>();
 
-	public List<SearchBean> getTable1() {
-		return Table1;
+	public List<SearchBean> getSouSuoJieGuo() {
+		return SouSuoJieGuo;
 	}
 
-	public void setTable1(List<SearchBean> table1) {
-		Table1 = table1;
+	public void setTable1(List<SearchBean> SouSuoJieGuo) {
+		this.SouSuoJieGuo = SouSuoJieGuo;
 	}
 
-	public void setTestData() {
-
-		SearchBean s1 = new SearchBean();
-		s1.setEquipmentcode("01");
-		s1.setEquipmentname("E");
-		s1.setEquipmenttype("类型");
-		s1.setPlacementposition("安置位置");
-		Table1.add(0, s1);
-		SearchBean s2 = new SearchBean();
-		s2.setEquipmentcode("02");
-		s2.setEquipmentname("E");
-		s2.setEquipmenttype("类型");
-		s2.setPlacementposition("安置位置");
-		Table1.add(1, s2);
-		SearchBean s3 = new SearchBean();
-		s3.setEquipmentcode("03");
-		s3.setEquipmentname("E");
-		s3.setEquipmenttype("类型");
-		s3.setPlacementposition("安置位置");
-		Table1.add(2, s3);
-	}
+	// public void setTestData() {
+	//
+	// SearchBean s1 = new SearchBean();
+	// s1.setEquipmentcode("01");
+	// s1.setEquipmentname("E");
+	// s1.setEquipmenttype("类型");
+	// s1.setPlacementposition("安置位置");
+	// Table1.add(0, s1);
+	// SearchBean s2 = new SearchBean();
+	// s2.setEquipmentcode("02");
+	// s2.setEquipmentname("E");
+	// s2.setEquipmenttype("类型");
+	// s2.setPlacementposition("安置位置");
+	// Table1.add(1, s2);
+	// SearchBean s3 = new SearchBean();
+	// s3.setEquipmentcode("03");
+	// s3.setEquipmentname("E");
+	// s3.setEquipmenttype("类型");
+	// s3.setPlacementposition("安置位置");
+	// Table1.add(2, s3);
+	// }
 
 	public class SearchBean {
 		private String equipmentcode;

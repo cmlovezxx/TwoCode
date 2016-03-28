@@ -1,5 +1,6 @@
 package com.zx.twocode.fragment.impl;
 
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -12,6 +13,7 @@ import com.zx.twocode.fragment.BaseFragment;
 import com.zx.twocode.global.GlobalParams;
 import com.zx.twocode.protocal.BaseProtocal;
 import com.zx.twocode.protocal.DetailProtocal;
+import com.zx.twocode.utils.PromptManager;
 
 public class DetailFragment extends BaseFragment<DetailListBean> {
 	private TextView equipmentcode;// 设备编码
@@ -77,12 +79,48 @@ public class DetailFragment extends BaseFragment<DetailListBean> {
 	}
 
 	@Override
-	protected String[] getParams() {
-		String[] strings = new String[] { "requestcode", "004" };
-		return strings;
+	public void refreshView() {
+		if (GlobalParams.currentEquipmentBean.getEquipmentCode() != null) {
+			new MyHttpTask<DetailListBean>() {
+
+				protected void onPreExecute() {
+					PromptManager.showProgressDialog(context);
+
+				};
+
+				@Override
+				protected DetailListBean doInBackground(String... params) {
+					SystemClock.sleep(300);
+					BaseProtocal<DetailListBean> protocal = new DetailProtocal();
+					DetailListBean result = protocal.load(params);
+					return result;
+				}
+
+				@Override
+				protected void onPostExecute(DetailListBean result) {
+					PromptManager.closeProgressDialog();
+					if (result != null) {
+						setView(result);
+					} else {
+						PromptManager.showNoDataRetry(context,
+								DetailFragment.this);
+					}
+
+				}
+			}.executeProxy();
+		}
 	}
 
 	@Override
+	protected String[] getParams() {
+		String[] strings = new String[] { "requestcode", "004",
+				"equipmentcode",
+				GlobalParams.currentEquipmentBean.getEquipmentCode()
+
+		};
+		return strings;
+	}
+
 	protected void setView(DetailListBean result) {
 		equipmentcode.setText(result.getTable1().get(0).getEquipmentcode());
 		equipmentname.setText(result.getTable1().get(0).getEquipmentname());
@@ -120,13 +158,6 @@ public class DetailFragment extends BaseFragment<DetailListBean> {
 			listViewParts.setAdapter(new DetailListViewAdapter(result
 					.getTable2(), context));
 		}
-	}
-
-	@Override
-	protected BaseProtocal<DetailListBean> createImplProtocal() {
-		// TODO 发布时删除
-		GlobalParams.hasData = true;
-		return new DetailProtocal();
 	}
 
 }

@@ -18,10 +18,20 @@ import com.zx.twocode.protocal.BaseProtocal;
 import com.zx.twocode.utils.NetUtil;
 import com.zx.twocode.utils.PromptManager;
 
-public abstract class BaseFragment<Params> extends Fragment implements
-		OnClickListener {
+public abstract class BaseFragment<Params> extends Fragment {
 	private View view;
 	protected FragmentActivity context;
+
+	// 储存其他页面传过来的数据
+	private Bundle bundle;
+
+	public Bundle getBundle() {
+		return bundle;
+	}
+
+	public void setBundle(Bundle bundle) {
+		this.bundle = bundle;
+	}
 
 	@Override
 	public void onAttach(Activity activity) {
@@ -55,33 +65,29 @@ public abstract class BaseFragment<Params> extends Fragment implements
 	 */
 
 	public void refreshView() {
-		new MyHttpTask<Params>() {
-
-			@Override
-			protected void setViewInfo(Params result) {
-				setView(result);
-			}
-
-			@Override
-			protected BaseProtocal<Params> createProtocal() {
-
-				return createImplProtocal();
-			}
-
-		}.executeProxy();
+		// new MyHttpTask<Params>() {
+		//
+		// @Override
+		// protected void setViewInfo(Params result) {
+		// setView(result);
+		// }
+		//
+		// @Override
+		// protected BaseProtocal<Params> createProtocal() {
+		//
+		// return createImplProtocal();
+		// }
+		//
+		// }.executeProxy();
 	}
 
-	protected abstract void setView(Params result);
-
-	protected abstract BaseProtocal<Params> createImplProtocal();
+	// protected abstract void setView(Params result);
+	//
+	// protected abstract BaseProtocal<Params> createImplProtocal();
 
 	/**
 	 * 处理该页面的点击事件
 	 */
-	@Override
-	public void onClick(View v) {
-
-	}
 
 	// TODO 异步加载框架 读取网络 获取数据
 	protected abstract class MyHttpTask<Params> extends
@@ -92,81 +98,81 @@ public abstract class BaseFragment<Params> extends Fragment implements
 		 * 
 		 * @param result
 		 */
-		protected abstract void setViewInfo(Params result);
+		// protected abstract void setViewInfo(Params result);
 
-		@Override
-		protected Params doInBackground(String... params) {
-			SystemClock.sleep(300);
-			BaseProtocal<Params> protocal = createProtocal();
-			Params result = protocal.load(params);
-			// Params result = protocal.paserData();
-			return result;
-		}
+		// @Override
+		// protected Params doInBackground(String... params) {
+		// SystemClock.sleep(300);
+		// BaseProtocal<Params> protocal = createProtocal();
+		// Params result = protocal.load(params);
+		// // Params result = protocal.paserData();
+		// return result;
+		// }
 
-		protected abstract BaseProtocal<Params> createProtocal();
+		// protected abstract BaseProtocal<Params> createProtocal();
 
-		@Override
-		protected void onPostExecute(Params result) {
-			// Log.e("Test", result.getProvider());
-			PromptManager.closeProgressDialog();
-			// PromptManager.showToast(context, result.getData().get(0)
-			// .getEquipmentcode());
-
-			if (result != null) {
-
-				setViewInfo(result);
-			} else {
-				// new AlertDialog.Builder(context)
-				//
-				// .setTitle(R.string.app_name)
-				// .setMessage("获取数据失败，请重试")
-				// .setNegativeButton("取消", null)
-				// .setPositiveButton(
-				// "重试",
-				// new android.content.DialogInterface.OnClickListener() {
-				//
-				// @Override
-				// public void onClick(DialogInterface dialog,
-				// int which) {
-				// // PromptManager
-				// // .showProgressDialog(context);
-				// refreshView();
-				// }
-				// }).show().setCanceledOnTouchOutside(false);
-
-				final AlertDialog alertDialog = new Builder(context).create();
-				alertDialog.show();
-				alertDialog.setCanceledOnTouchOutside(false);
-				alertDialog.getWindow().setContentView(R.layout.server_busy);
-				alertDialog.getWindow().findViewById(R.id.zx_bn_cancel)
-						.setOnClickListener(new View.OnClickListener() {
-
-							@Override
-							public void onClick(View v) {
-								alertDialog.dismiss();
-							}
-						});
-				alertDialog.getWindow().findViewById(R.id.zx_bn_retry)
-						.setOnClickListener(new View.OnClickListener() {
-
-							@Override
-							public void onClick(View v) {
-								refreshView();
-								alertDialog.dismiss();
-							}
-						});
-			}
-		}
+		// @Override
+		// protected void onPostExecute(Params result) {
+		// // Log.e("Test", result.getProvider());
+		// PromptManager.closeProgressDialog();
+		// // PromptManager.showToast(context, result.getData().get(0)
+		// // .getEquipmentcode());
+		//
+		// if (result != null) {
+		//
+		// setViewInfo(result);
+		// } else {
+		// // new AlertDialog.Builder(context)
+		// //
+		// // .setTitle(R.string.app_name)
+		// // .setMessage("获取数据失败，请重试")
+		// // .setNegativeButton("取消", null)
+		// // .setPositiveButton(
+		// // "重试",
+		// // new android.content.DialogInterface.OnClickListener() {
+		// //
+		// // @Override
+		// // public void onClick(DialogInterface dialog,
+		// // int which) {
+		// // // PromptManager
+		// // // .showProgressDialog(context);
+		// // refreshView();
+		// // }
+		// // }).show().setCanceledOnTouchOutside(false);
+		//
+		// final AlertDialog alertDialog = new Builder(context).create();
+		// alertDialog.show();
+		// alertDialog.setCanceledOnTouchOutside(false);
+		// alertDialog.getWindow().setContentView(R.layout.server_busy);
+		// alertDialog.getWindow().findViewById(R.id.zx_bn_cancel)
+		// .setOnClickListener(new View.OnClickListener() {
+		//
+		// @Override
+		// public void onClick(View v) {
+		// alertDialog.dismiss();
+		// }
+		// });
+		// alertDialog.getWindow().findViewById(R.id.zx_bn_retry)
+		// .setOnClickListener(new View.OnClickListener() {
+		//
+		// @Override
+		// public void onClick(View v) {
+		// refreshView();
+		// alertDialog.dismiss();
+		// }
+		// });
+		// }
+		// }
 
 		/**
 		 * 在进入子线程前做的工作
 		 */
-		@Override
-		protected void onPreExecute() {
-			PromptManager.showProgressDialog(context);
-			super.onPreExecute();
-
-		}
+		// @Override
+		// protected void onPreExecute() {
+		// PromptManager.showProgressDialog(context);
+		// super.onPreExecute();
+		//
+		// }
 
 		/**
 		 * 类似与Thread.start方法 由于final修饰，无法Override，方法重命名 省略掉网络判断
@@ -184,12 +190,6 @@ public abstract class BaseFragment<Params> extends Fragment implements
 		}
 
 	}
-
-	/**
-	 * 子线程加载数据后，设置当前界面信息
-	 * 
-	 * @param result
-	 */
 
 	/**
 	 * 填写该页面的请求参数

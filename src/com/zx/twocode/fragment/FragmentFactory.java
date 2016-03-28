@@ -18,7 +18,7 @@ import com.zx.twocode.global.ConstantValue;
 public class FragmentFactory {
 
 	private static Map<Integer, BaseFragment> mFragments = new HashMap<Integer, BaseFragment>();
-	private static Map<Integer, Fragment> mNoNetFragments = new HashMap<Integer, Fragment>();
+//	private static Map<Integer, Fragment> mNoNetFragments = new HashMap<Integer, Fragment>();
 
 	public static BaseFragment createFragment(int position) {
 

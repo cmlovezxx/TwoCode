@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BasicListBean {
-	private List<BasicBean> Data = new ArrayList<BasicBean>();
+	private List<BasicBean> JiBenXinXi = new ArrayList<BasicBean>();
 
-	public List<BasicBean> getData() {
-		return Data;
+	public List<BasicBean> getJiBenXinXi() {
+		return JiBenXinXi;
 	}
 
-	public void setData(List<BasicBean> data) {
-		Data = data;
+	public void setJiBenXinXi(List<BasicBean> data) {
+		this.JiBenXinXi = JiBenXinXi;
 	}
 
 	public class BasicBean {

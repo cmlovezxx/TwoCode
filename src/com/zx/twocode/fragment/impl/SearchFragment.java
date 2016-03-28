@@ -1,6 +1,6 @@
 package com.zx.twocode.fragment.impl;
 
-import android.graphics.Color;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -15,6 +15,7 @@ import com.zx.twocode.global.GlobalParams;
 import com.zx.twocode.manager.MiddleUIManager;
 import com.zx.twocode.protocal.BaseProtocal;
 import com.zx.twocode.protocal.SearchProtocal;
+import com.zx.twocode.utils.PromptManager;
 
 public class SearchFragment extends BaseFragment<SearchListBean> {
 
@@ -29,17 +30,51 @@ public class SearchFragment extends BaseFragment<SearchListBean> {
 	}
 
 	@Override
-	protected String[] getParams() {
-		// TODO 需要填写请求信息
-		String[] strings = { "requestcode", "002" };
-		return strings;
+	public void refreshView() {
+		new MyHttpTask<SearchListBean>() {
+
+			protected void onPreExecute() {
+				PromptManager.showProgressDialog(context);
+
+			};
+
+			@Override
+			protected SearchListBean doInBackground(String... params) {
+				SystemClock.sleep(300);
+				BaseProtocal<SearchListBean> protocal = new SearchProtocal();
+				SearchListBean result = protocal.load(params);
+				return result;
+			}
+
+			@Override
+			protected void onPostExecute(SearchListBean result) {
+				PromptManager.closeProgressDialog();
+				if (result != null) {
+					setView(result);
+				} else {
+					PromptManager.showNoDataRetry(context, SearchFragment.this);
+				}
+
+			}
+		}.executeProxy();
 	}
 
 	@Override
-	protected void setView(SearchListBean result) {
+	protected String[] getParams() {
+		// TODO 需要填写请求信息
+		if (getBundle().getString("searchresult") != null) {
+			String[] strings = { "requestcode", "002", "userinput",
+					getBundle().getString("searchresult") };
+			return strings;
+		}
+		// String[] strings = { "requestcode", "002" };
+		return null;
+	}
+
+	protected void setView(final SearchListBean result) {
 		// TODO Auto-generated method stub
-		listViewSearch.setAdapter(new SearchListViewAdapter(result.getTable1(),
-				context));
+		listViewSearch.setAdapter(new SearchListViewAdapter(result
+				.getSouSuoJieGuo(), context));
 		listViewSearch.setSelector(R.color.list_item_click);
 		listViewSearch.setCacheColorHint(R.color.list_item_click);
 		listViewSearch.setDividerHeight(0);
@@ -51,17 +86,21 @@ public class SearchFragment extends BaseFragment<SearchListBean> {
 
 				// 点击要搜索的条目后跳转到基本信息界面
 				GlobalParams.isFirst = false;
-				MiddleUIManager.getInstance()
-						.ChangeUI(ConstantValue.BASIC_INFO);
+				GlobalParams.currentEquipmentBean.setEquipmentCode(result
+						.getSouSuoJieGuo().get(arg2).getEquipmentcode());
+				GlobalParams.currentEquipmentBean.setEquipmentName(result
+						.getSouSuoJieGuo().get(arg2).getEquipmentname());
+				MiddleUIManager.getInstance().ChangeUI(
+						ConstantValue.BASIC_INFO, null);
 			}
 		});
 	}
 
-	@Override
-	protected BaseProtocal<SearchListBean> createImplProtocal() {
-		// TODO 发布时删除
-		GlobalParams.hasData = false;
-		return new SearchProtocal();
-	}
+	// @Override
+	// protected BaseProtocal<SearchListBean> createImplProtocal() {
+	// // TODO 发布时删除
+	// // GlobalParams.hasData = false;
+	// return new SearchProtocal();
+	// }
 
 }

@@ -1,5 +1,9 @@
 package com.zx.twocode.manager;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -9,18 +13,21 @@ import android.support.v4.view.ViewPager;
 import com.zx.twocode.R;
 import com.zx.twocode.fragment.BaseFragment;
 import com.zx.twocode.fragment.FragmentFactory;
-import com.zx.twocode.global.ConstantValue;
-import com.zx.twocode.utils.PromptManager;
 import com.zx.twocode.view.MyViewPager;
 
 public class MiddleUIManager {
 
 	private static MiddleUIManager instance = new MiddleUIManager();
 	private MyViewPager vp;
-	private String codeResult;
 
-	public String getCodeResult() {
-		return codeResult;
+	private BaseFragment currentFragment;
+
+	public BaseFragment getCurrentFragment() {
+		return currentFragment;
+	}
+
+	public void setCurrentFragment(BaseFragment currentFragment) {
+		this.currentFragment = currentFragment;
 	}
 
 	public MyViewPager getVp() {
@@ -37,7 +44,6 @@ public class MiddleUIManager {
 	public void init(FragmentActivity activity) {
 		vp = (MyViewPager) activity.findViewById(R.id.vp);
 		vp.setAdapter(new MyAdapter(activity.getSupportFragmentManager()));
-		// vp.setOffscreenPageLimit(5);
 		setListner();
 	}
 
@@ -67,15 +73,11 @@ public class MiddleUIManager {
 	 * 
 	 * @param position
 	 */
-	public void ChangeUI(int position) {
 
+	public void ChangeUI(int position, Bundle bundle) {
+		currentFragment = FragmentFactory.createFragment(position);
+		currentFragment.setBundle(bundle);
 		vp.setCurrentItem(position, false);
-	}
-
-	public void ChangeUI(int position, String result) {
-
-		vp.setCurrentItem(position, false);
-		codeResult = result;
 	}
 
 	class MyAdapter extends FragmentStatePagerAdapter {

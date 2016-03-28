@@ -1,31 +1,34 @@
 package com.zx.twocode.protocal;
 
-import com.zx.twocode.global.GlobalParams;
 import com.zx.twocode.http.HttpHelper;
 import com.zx.twocode.http.HttpHelper.HttpResult;
 
 public abstract class BaseProtocal<T> {
 	// 1.load(String)方法
 	public T load(String... params) {
-//		// 方法中首先加载服务器，loadServer
-//		String json = loadServer(params);
-//		// 其次解析json
-//		if (json != null) {
-//			return paserJson(json);
-//		}
-//		
-//		return null;
-// TODO 测试用，发布删掉
-		if (GlobalParams.hasData) {
-			String json = loadServer(params);
-			// 其次解析json
-			if (json != null) {
-				return paserJson(json);
-			}
-		} else {
-			return paserData();
+		// 方法中首先加载服务器，loadServer
+		String json = loadServer(params);
+		// 其次解析json
+		if (json != null) {
+			return paserJson(json);
 		}
-//删掉到此
+
+		// else {
+		// return paserData();
+		// }
+		//
+		// return null;
+		// TODO 测试用，发布删掉
+		// if (GlobalParams.hasData) {
+		// String json = loadServer(params);
+		// // 其次解析json
+		// if (json != null) {
+		// return paserJson(json);
+		// }
+		// } else {
+		// return paserData();
+		// }
+		// 删掉到此
 		return null;
 	}
 
@@ -34,7 +37,7 @@ public abstract class BaseProtocal<T> {
 	 * 
 	 * @return
 	 */
-	public abstract T paserData();
+//	public abstract T paserData();
 
 	// 解析json需要子类根据自己的数据解析
 	public abstract T paserJson(String json);

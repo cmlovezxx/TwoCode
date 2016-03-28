@@ -1,13 +1,16 @@
 package com.zx.twocode.manager;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.zx.twocode.R;
+import com.zx.twocode.fragment.impl.SearchFragment;
 import com.zx.twocode.global.ConstantValue;
 import com.zxing.activity.CaptureActivity;
 
@@ -30,6 +33,10 @@ public class TitleUIMagager {
 		return et_search;
 	}
 
+	public void clearSearch() {
+		et_search.setText("");
+	}
+
 	private LinearLayout ll;
 	private ImageButton code;
 	private EditText et_search;
@@ -50,35 +57,38 @@ public class TitleUIMagager {
 
 			@Override
 			public void onClick(View v) {
-				// TODO 璺宠浆鍒版壂鎻忎簩缁寸爜鐨勭晫闈�
 				Intent i = new Intent(activity, CaptureActivity.class);
 				activity.startActivityForResult(i, 0);
 
 			}
 		});
-		// et_search.setOnFocusChangeListener(new OnFocusChangeListener() {
-		//
-		// @Override
-		// public void onFocusChange(View v, boolean hasFocus) {
-		// Log.e("Test", hasFocus + "");
-		// InputMethodManager imm = (InputMethodManager) activity
-		// .getSystemService(Context.INPUT_METHOD_SERVICE);
-		//
-		// imm.hideSoftInputFromWindow(activity.getCurrentFocus()
-		// .getWindowToken(), 0);
-		// }
-		//
-		// });
+
 		search.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				// TODO 鏍规嵁edittext鐨勫唴瀹癸紝璇锋眰鏈嶅姟鍣ㄥ悗锛岃烦杞埌鎼滅储椤甸潰銆�
-				// GlobalParams.isFirst = false;
-				BottomUIMagager.getInstance().setAllCheckFalse();
-				MiddleUIManager.getInstance().ChangeUI(
-						ConstantValue.SEARCH_INFO);
 
+				if (et_search.getText().toString().length() >= 3) {
+					Bundle bundle = new Bundle();
+					bundle.putString("searchresult", et_search.getText()
+							.toString().trim());
+					if (MiddleUIManager.getInstance().getCurrentFragment() instanceof SearchFragment) {
+						MiddleUIManager.getInstance().getCurrentFragment()
+								.setBundle(bundle);
+						MiddleUIManager.getInstance().getCurrentFragment()
+								.refreshView();
+					} else {
+
+						MiddleUIManager.getInstance().ChangeUI(
+								ConstantValue.SEARCH_INFO, bundle);
+					}
+					BottomUIMagager.getInstance().setAllCheckFalse();
+
+				} else {
+					Toast.makeText(activity, "Search is empty！",
+							Toast.LENGTH_LONG).show();
+				}
+				clearSearch();
 			}
 		});
 	}

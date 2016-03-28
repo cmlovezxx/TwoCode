@@ -16,22 +16,22 @@ public class BlankFragment extends BaseFragment<String> {
 		return view;
 	}
 
-	@Override
-	protected void setView(String result) {
+//	@Override
+//	protected void setView(String result) {
+//
+//	}
 
-	}
+//	@Override
+//	public void refreshView() {
+//
+//	}
 
-	@Override
-	public void refreshView() {
-
-	}
-
-	@Override
-	protected BaseProtocal<String> createImplProtocal() {
-		// GlobalParams.hasData = false;
-		// return new BlankProtocal();
-		return null;
-	}
+//	@Override
+//	protected BaseProtocal<String> createImplProtocal() {
+//		// GlobalParams.hasData = false;
+//		// return new BlankProtocal();
+//		return null;
+//	}
 
 	@Override
 	protected String[] getParams() {

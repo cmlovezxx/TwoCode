@@ -23,6 +23,7 @@ import com.zx.twocode.global.GlobalParams;
 import com.zx.twocode.protocal.BaseProtocal;
 import com.zx.twocode.protocal.EquipmentProtocal;
 import com.zx.twocode.utils.Helper;
+import com.zx.twocode.utils.PromptManager;
 
 public class EquipmentFragment extends BaseFragment<EquipmentListBean> {
 	private ListView zx_lv_currentchild;
@@ -57,6 +58,38 @@ public class EquipmentFragment extends BaseFragment<EquipmentListBean> {
 	// equipmentListBean.setTestData();
 	// return equipmentListBean;
 	// }
+	@Override
+	public void refreshView() {
+		if (GlobalParams.currentEquipmentBean.getEquipmentCode() != null) {
+			new MyHttpTask<EquipmentListBean>() {
+
+				protected void onPreExecute() {
+					PromptManager.showProgressDialog(context);
+
+				};
+
+				@Override
+				protected EquipmentListBean doInBackground(String... params) {
+					SystemClock.sleep(300);
+					BaseProtocal<EquipmentListBean> protocal = new EquipmentProtocal();
+					EquipmentListBean result = protocal.load(params);
+					return result;
+				}
+
+				@Override
+				protected void onPostExecute(EquipmentListBean result) {
+					PromptManager.closeProgressDialog();
+					if (result != null) {
+						setView(result);
+					} else {
+						PromptManager.showNoDataRetry(context,
+								EquipmentFragment.this);
+					}
+
+				}
+			}.executeProxy();
+		}
+	}
 
 	private void getAllData() {
 
@@ -80,8 +113,8 @@ public class EquipmentFragment extends BaseFragment<EquipmentListBean> {
 			tv.setTextSize(10f);
 			if (i == currentAllParent.size() - 1) {
 				tv.setText(currentAllParent.get(i).getName());
-			}else{
-				
+			} else {
+
 				tv.setText(currentAllParent.get(i).getName() + " / ");
 			}
 			tv.setTag(i);
@@ -112,11 +145,12 @@ public class EquipmentFragment extends BaseFragment<EquipmentListBean> {
 
 	@Override
 	protected String[] getParams() {
-		String[] strings = new String[] { "requestcode", "005" };
+		String[] strings = new String[] { "requestcode", "005",
+				"equipmentcode",
+				GlobalParams.currentEquipmentBean.getEquipmentCode() };
 		return strings;
 	}
 
-	@Override
 	protected void setView(EquipmentListBean result) {
 		nodes = Helper.getNodes(result.getData());
 		for (Node n : nodes) {
@@ -139,21 +173,18 @@ public class EquipmentFragment extends BaseFragment<EquipmentListBean> {
 					long arg3) {
 				currentNode = currentNode.getChildren().get(arg2);
 				// GlobalParams.currentEquipment = currentNode.getId();
+
 				GlobalParams.currentEquipmentBean.setEquipmentCode(currentNode
 						.getId());
 				GlobalParams.currentEquipmentBean.setEquipmentName(currentNode
 						.getName());
+
 				getAllData();
 			}
 		});
 
 	}
 
-	@Override
-	protected BaseProtocal<EquipmentListBean> createImplProtocal() {
-		// TODO 发布时删除
-		GlobalParams.hasData = false;
-		return new EquipmentProtocal();
-	}
+	
 
 }

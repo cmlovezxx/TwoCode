@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.zx.twocode.R;
+import com.zx.twocode.fragment.BaseFragment;
 import com.zx.twocode.global.ConstantValue;
 import com.zx.twocode.global.GlobalParams;
 import com.zx.twocode.manager.BottomUIMagager;
@@ -86,6 +87,37 @@ public class PromptManager {
 							intent.setAction("android.intent.action.VIEW");
 						}
 						context.startActivity(intent);
+					}
+				});
+	}
+
+	/**
+	 * 服务器忙，没有获得数据，重试
+	 * 
+	 * @param context
+	 */
+	public static <Params> void showNoDataRetry(Context context,
+			final BaseFragment<Params> fragment) {
+
+		final AlertDialog alertDialog = new Builder(context).create();
+		alertDialog.show();
+		alertDialog.setCanceledOnTouchOutside(false);
+		alertDialog.getWindow().setContentView(R.layout.server_busy);
+		alertDialog.getWindow().findViewById(R.id.zx_bn_cancel)
+				.setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						alertDialog.dismiss();
+					}
+				});
+		alertDialog.getWindow().findViewById(R.id.zx_bn_retry)
+				.setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						fragment.refreshView();
+						alertDialog.dismiss();
 					}
 				});
 	}
@@ -183,7 +215,7 @@ public class PromptManager {
 						alertDialog.dismiss();
 						GlobalParams.isLogout = true;
 						MiddleUIManager.getInstance().ChangeUI(
-								ConstantValue.LOGIN_INFO);
+								ConstantValue.LOGIN_INFO, null);
 						BottomUIMagager.getInstance().setAllCheckFalse();
 					}
 				});

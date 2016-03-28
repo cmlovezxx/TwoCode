@@ -16,13 +16,13 @@ public class DocumentProtocal extends BaseProtocal<DocumentListBean> {
 		return null;
 	}
 
-	@Override
-	public DocumentListBean paserData() {
-//		SystemClock.sleep(500);
-
-		DocumentListBean docListBean = new DocumentListBean();
-		docListBean.setTestData();
-		return docListBean;
-	}
+//	@Override
+//	public DocumentListBean paserData() {
+////		SystemClock.sleep(500);
+//
+//		DocumentListBean docListBean = new DocumentListBean();
+//		docListBean.setTestData();
+//		return docListBean;
+//	}
 
 }

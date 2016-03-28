@@ -1,13 +1,12 @@
 package com.zx.twocode.manager;
 
-import com.zx.twocode.R;
-import com.zx.twocode.global.ConstantValue;
-
 import android.support.v4.app.FragmentActivity;
-import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+
+import com.zx.twocode.R;
+import com.zx.twocode.global.ConstantValue;
 
 public class BottomUIMagager {
 
@@ -32,13 +31,6 @@ public class BottomUIMagager {
 		rb1.setChecked(true);
 	}
 
-	// public void setAllCheckFalse() {
-	// int count = rg.getChildCount();
-	// for (int i = 0; i < count; i++) {
-	// RadioButton childAt = (RadioButton) rg.getChildAt(i);
-	// childAt.setChecked(false);
-	// }
-	// }
 	public void setAllCheckFalse() {
 
 		rb5.setChecked(true);
@@ -60,29 +52,30 @@ public class BottomUIMagager {
 				switch (checkedId) {
 				case R.id.rb1:
 					MiddleUIManager.getInstance().ChangeUI(
-							ConstantValue.DETAIL_INFO);
+							ConstantValue.DETAIL_INFO, null);
 
 					break;
 				case R.id.rb2:
 					MiddleUIManager.getInstance().ChangeUI(
-							ConstantValue.EQUIPMENT_INFO);
+							ConstantValue.EQUIPMENT_INFO, null);
 
 					break;
 				case R.id.rb3:
 
 					MiddleUIManager.getInstance().ChangeUI(
-							ConstantValue.DOCUMENT_INFO);
+							ConstantValue.DOCUMENT_INFO, null);
 
 					break;
 				case R.id.rb4:
 					MiddleUIManager.getInstance().ChangeUI(
-							ConstantValue.MY_INFO);
+							ConstantValue.MY_INFO, null);
 
 					break;
 
 				default:
 					break;
 				}
+				TitleUIMagager.getInstance().clearSearch();
 			}
 		});
 	}

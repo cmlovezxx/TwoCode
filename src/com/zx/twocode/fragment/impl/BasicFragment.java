@@ -1,8 +1,10 @@
 package com.zx.twocode.fragment.impl;
 
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.zx.twocode.R;
 import com.zx.twocode.bean.BasicListBean;
 import com.zx.twocode.fragment.BaseFragment;
@@ -10,6 +12,7 @@ import com.zx.twocode.global.GlobalParams;
 import com.zx.twocode.manager.MiddleUIManager;
 import com.zx.twocode.protocal.BaseProtocal;
 import com.zx.twocode.protocal.BasicProtocal;
+import com.zx.twocode.utils.PromptManager;
 
 public class BasicFragment extends BaseFragment<BasicListBean> {
 
@@ -45,13 +48,46 @@ public class BasicFragment extends BaseFragment<BasicListBean> {
 	public void refreshView() {
 
 		if (!GlobalParams.isFirst) {
-			super.refreshView();
+			// super.refreshView();
+
+			new MyHttpTask<BasicListBean>() {
+
+				protected void onPreExecute() {
+					PromptManager.showProgressDialog(context);
+
+				};
+
+				@Override
+				protected BasicListBean doInBackground(String... params) {
+					SystemClock.sleep(300);
+					BaseProtocal<BasicListBean> protocal = new BasicProtocal();
+					BasicListBean result = protocal.load(params);
+					return result;
+				}
+
+				@Override
+				protected void onPostExecute(BasicListBean result) {
+					PromptManager.closeProgressDialog();
+					if (result != null) {
+						setView(result);
+					} else {
+						PromptManager.showNoDataRetry(context,
+								BasicFragment.this);
+					}
+
+				}
+			}.executeProxy();
 		} else {
-			String codeResult = MiddleUIManager.getInstance().getCodeResult();
-			if (codeResult != null) {
+			// String codeResult = MiddleUIManager.getInstance().getCodeResult(
+			// "two");
+			if (getBundle().getString("scanresult") != null) {
 
-				String[] codeResultArray = codeResult.split(",");
-
+				// String[] codeResultArray = codeResult.split(",");
+				Gson gson = new Gson();
+				BasicListBean basicListBean = (BasicListBean) gson.fromJson(
+						getBundle().getString("scanresult"),
+						BasicListBean.class);
+				setView(basicListBean);
 			}
 		}
 
@@ -59,29 +95,38 @@ public class BasicFragment extends BaseFragment<BasicListBean> {
 
 	@Override
 	protected String[] getParams() {
-		String[] strings = new String[] { "requestcode", "003" };
+		String[] strings = new String[] { "requestcode", "003",
+				"equipmentcode",
+				GlobalParams.currentEquipmentBean.getEquipmentCode()
+
+		};
 		return strings;
 	}
 
-	@Override
-	protected void setView(BasicListBean result) {
-		equipmentcode.setText(result.getData().get(0).getEquipmentcode());
-		equipmentname.setText(result.getData().get(0).getEquipmentname());
-		trademark.setText(result.getData().get(0).getTrademark());
-		type.setText(result.getData().get(0).getType());
-		specification.setText(result.getData().get(0).getSpecification());
-		provider.setText(result.getData().get(0).getProvider());
-		procurementdate.setText(result.getData().get(0).getProcurementdate());
-		batchnumber.setText(result.getData().get(0).getBatchnumbe());
-		placementposition.setText(result.getData().get(0)
+	// @Override
+	// protected void setView(BasicListBean result) {
+	// setViewData(result);
+	// }
+
+	private void setView(BasicListBean result) {
+		equipmentcode.setText(result.getJiBenXinXi().get(0).getEquipmentcode());
+		equipmentname.setText(result.getJiBenXinXi().get(0).getEquipmentname());
+		trademark.setText(result.getJiBenXinXi().get(0).getTrademark());
+		type.setText(result.getJiBenXinXi().get(0).getType());
+		specification.setText(result.getJiBenXinXi().get(0).getSpecification());
+		provider.setText(result.getJiBenXinXi().get(0).getProvider());
+		procurementdate.setText(result.getJiBenXinXi().get(0)
+				.getProcurementdate());
+		batchnumber.setText(result.getJiBenXinXi().get(0).getBatchnumbe());
+		placementposition.setText(result.getJiBenXinXi().get(0)
 				.getPlacementposition());
 	}
 
-	@Override
-	protected BaseProtocal<BasicListBean> createImplProtocal() {
-		// TODO 发布时删除
-		GlobalParams.hasData = true;
-		return new BasicProtocal();
-	}
+	// @Override
+	// protected BaseProtocal<BasicListBean> createImplProtocal() {
+	// // TODO 发布时删除
+	// // GlobalParams.hasData = true;
+	// return new BasicProtocal();
+	// }
 
 }

@@ -3,15 +3,9 @@ package com.zx.twocode.fragment.impl;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.zx.twocode.R;
 import com.zx.twocode.fragment.BaseFragment;
-import com.zx.twocode.global.ConstantValue;
-import com.zx.twocode.global.GlobalParams;
-import com.zx.twocode.manager.BottomUIMagager;
-import com.zx.twocode.manager.MiddleUIManager;
-import com.zx.twocode.protocal.BaseProtocal;
 import com.zx.twocode.utils.PromptManager;
 
 public class MyFragment extends BaseFragment<String> {
@@ -45,21 +39,21 @@ public class MyFragment extends BaseFragment<String> {
 		return view;
 	}
 
-	@Override
-	public void refreshView() {
-	}
+//	@Override
+//	public void refreshView() {
+//	}
 
-	@Override
-	protected void setView(String result) {
+	// @Override
+	// protected void setView(String result) {
+	//
+	// }
 
-	}
-
-	@Override
-	protected BaseProtocal<String> createImplProtocal() {
-		// GlobalParams.hasData = false;
-		// return new MyProtocal();
-		return null;
-	}
+	// @Override
+	// protected BaseProtocal<String> createImplProtocal() {
+	// // GlobalParams.hasData = false;
+	// // return new MyProtocal();
+	// return null;
+	// }
 
 	@Override
 	protected String[] getParams() {

@@ -11,7 +11,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import com.google.gson.Gson;
+import com.zx.twocode.bean.BasicListBean;
 import com.zx.twocode.global.ConstantValue;
+import com.zx.twocode.global.GlobalParams;
 import com.zx.twocode.manager.BottomUIMagager;
 import com.zx.twocode.manager.MiddleUIManager;
 import com.zx.twocode.manager.SharedPreferencesManager;
@@ -25,6 +28,7 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		init();
+
 	}
 
 	public void init() {
@@ -57,8 +61,23 @@ public class MainActivity extends FragmentActivity {
 		if (resultCode == RESULT_OK) {
 			String result = data.getExtras().getString("result");
 			// TODO 取得结果后显示在第一个界面中
-			MiddleUIManager.getInstance().ChangeUI(ConstantValue.BASIC_INFO,
-					result);
+			if (result != null) {
+
+				GlobalParams.isFirst = true;
+				Gson gson = new Gson();
+				BasicListBean basicListBean = (BasicListBean) gson.fromJson(
+						result, BasicListBean.class);
+				GlobalParams.currentEquipmentBean
+						.setEquipmentCode(basicListBean.getJiBenXinXi().get(0)
+								.getEquipmentcode());
+				GlobalParams.currentEquipmentBean
+						.setEquipmentName(basicListBean.getJiBenXinXi().get(0)
+								.getEquipmentname());
+				Bundle bundle = new Bundle();
+				bundle.putString("scanresult", result);
+				MiddleUIManager.getInstance().ChangeUI(
+						ConstantValue.BASIC_INFO, bundle);
+			}
 		}
 	}
 
@@ -112,7 +131,8 @@ public class MainActivity extends FragmentActivity {
 			PromptManager.showExitSystem(this);
 
 		} else {
-			MiddleUIManager.getInstance().ChangeUI(ConstantValue.BLANK_INFO);
+			MiddleUIManager.getInstance().ChangeUI(ConstantValue.BLANK_INFO,
+					null);
 			BottomUIMagager.getInstance().setAllCheckFalse();
 
 		}

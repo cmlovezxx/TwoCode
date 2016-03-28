@@ -14,9 +14,9 @@ public class DetailProtocal extends BaseProtocal<DetailListBean> {
 		return detailListBean;
 	}
 
-	@Override
-	public DetailListBean paserData() {
-		return null;
-	}
+	// @Override
+	// public DetailListBean paserData() {
+	// return null;
+	// }
 
 }

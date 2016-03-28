@@ -58,14 +58,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_equipment_code"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_equipmentcode"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -103,14 +103,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_equipment_name"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_equipmentname"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -148,14 +148,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_brand"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_trademark"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -193,14 +193,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_model"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_type"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -238,14 +238,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_specification"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_specification"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -283,14 +283,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_supplier"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_provider"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -328,14 +328,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_purchase_date"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_procurementdate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -373,14 +373,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_batch_number"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_batchnumber"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -418,14 +418,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_location"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_placementposition"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -463,14 +463,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_equipment_category"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_equipmenttype"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -508,14 +508,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_super_equipment"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_superequipment"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -553,14 +553,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_physical_dimension"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_externaldimension"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -598,14 +598,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_weight"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_weight"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -643,14 +643,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_producer"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_manufacture"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -688,14 +688,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_production_code"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_factorycode"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -733,14 +733,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_production_date"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_produceddate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -778,14 +778,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_life_span"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_durableyears"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -823,14 +823,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_main_specification_fields"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_maintechnicalparameters"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -868,14 +868,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_remark"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_remark"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -913,14 +913,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_status"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_equipmentstate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView
@@ -958,14 +958,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/zx_tv_modification_time"
                             android:textColor="#104678"
-                            android:textSize="15sp" />
+                            android:textSize="@dimen/detail_title_size" />
 
                         <TextView
                             android:id="@+id/zx_tv_modificationtime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#828282"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/detail_content_size" />
                     </LinearLayout>
 
                     <ImageView

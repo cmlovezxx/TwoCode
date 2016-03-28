@@ -1,9 +1,12 @@
 package com.zx.twocode.fragment.impl;
 
 import android.content.SharedPreferences.Editor;
+import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -11,14 +14,16 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.zx.twocode.R;
+import com.zx.twocode.bean.LoginListBean;
 import com.zx.twocode.fragment.BaseFragment;
 import com.zx.twocode.global.ConstantValue;
-import com.zx.twocode.global.GlobalParams;
 import com.zx.twocode.manager.MiddleUIManager;
 import com.zx.twocode.manager.SharedPreferencesManager;
 import com.zx.twocode.protocal.BaseProtocal;
+import com.zx.twocode.protocal.LoginProtocal;
 
-public class LoginFragment extends BaseFragment<String> {
+public class LoginFragment extends BaseFragment<String> implements
+		OnClickListener {
 
 	private EditText login_username, login_password;
 	private ImageView clear;
@@ -32,39 +37,54 @@ public class LoginFragment extends BaseFragment<String> {
 			login_username.setText("");
 			break;
 		case R.id.zx_user_login:
-//			服务器数据有了之后打开
-//			refreshView();
-			if (login_username.getText().toString() != null
-					|| login_password.getText().toString() != null) {
-				// 发送请求给服务器，验证登陆信息
-				String result = null;
-				if (login_username.getText().toString().equals("111")
-						&& login_password.getText().toString().equals("111")) {
-					result = "1";
-				}
+			// 服务器数据有了之后打开
+			// refreshView();
+			if (login_username.getText() == null
+					|| login_password.getText() == null) {
+				Log.e("Test", login_username.getText().toString());
+				Toast.makeText(context, "Invalid username or password！",
+						Toast.LENGTH_LONG).show();
 
-				// 服务器返回结果与用户是否选择自动登陆做一个判断
-				if (result == "1") {
-					Editor editor = SharedPreferencesManager.getInstance()
-							.getSp().edit();
-					if (login_auto_login.isChecked()) {
-						// 如果为真把当前时间、用户名、密码、自动登陆状态存到SharedPreferences中
+			} else {
 
-						editor.putLong("time", System.currentTimeMillis());
+				new MyHttpTask<LoginListBean>() {
 
-						editor.commit();
-
+					@Override
+					protected LoginListBean doInBackground(String... params) {
+						SystemClock.sleep(300);
+						BaseProtocal<LoginListBean> protocal = new LoginProtocal();
+						LoginListBean result = protocal.load(params);
+						return result;
 					}
 
-					MiddleUIManager.getInstance().ChangeUI(
-							ConstantValue.BLANK_INFO);
-				} else {
-					Toast.makeText(context, "Invalid username or password！", Toast.LENGTH_LONG)
-							.show();
-				}
-			} else {
-				Toast.makeText(context, "Invalid username or password！", Toast.LENGTH_LONG)
-						.show();
+					protected void onPostExecute(LoginListBean result) {
+
+						Log.e("Test", result.getDengLu().get(0)
+								.getResponsecode());
+						if (result.getDengLu().get(0).getResponsecode()
+								.equals("1")) {
+							Editor editor = SharedPreferencesManager
+									.getInstance().getSp().edit();
+							if (login_auto_login.isChecked()) {
+								// 如果为真把当前时间、用户名、密码、自动登陆状态存到SharedPreferences中
+
+								editor.putLong("time",
+										System.currentTimeMillis());
+
+								editor.commit();
+
+							}
+
+							MiddleUIManager.getInstance().ChangeUI(
+									ConstantValue.BLANK_INFO, null);
+						} else {
+							Toast.makeText(context,
+									"Invalid username or password！",
+									Toast.LENGTH_LONG).show();
+						}
+
+					};
+				}.executeProxy();
 
 			}
 			break;
@@ -114,31 +134,10 @@ public class LoginFragment extends BaseFragment<String> {
 	}
 
 	@Override
-	public void refreshView() {
-
-		if (!GlobalParams.isLogout) {
-			super.refreshView();
-		} else {
-			return;
-		}
-	}
-
-	@Override
 	protected String[] getParams() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	protected void setView(String result) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected BaseProtocal<String> createImplProtocal() {
-		// TODO Auto-generated method stub
-		return null;
+		return new String[] { "requestcode", "001", "username",
+				login_username.getText().toString().trim(), "userpassword",
+				login_password.getText().toString().trim() };
 	}
 
 }

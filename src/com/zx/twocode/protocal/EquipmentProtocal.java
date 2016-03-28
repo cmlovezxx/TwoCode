@@ -12,13 +12,13 @@ public class EquipmentProtocal extends BaseProtocal<EquipmentListBean> {
 		return null;
 	}
 
-	@Override
-	public EquipmentListBean paserData() {
-		
-//		SystemClock.sleep(500);
-		EquipmentListBean equipmentListBean = new EquipmentListBean();
-		equipmentListBean.setTestData();
-		return equipmentListBean;
-	}
+//	@Override
+//	public EquipmentListBean paserData() {
+//		
+////		SystemClock.sleep(500);
+//		EquipmentListBean equipmentListBean = new EquipmentListBean();
+//		equipmentListBean.setTestData();
+//		return equipmentListBean;
+//	}
 
 }

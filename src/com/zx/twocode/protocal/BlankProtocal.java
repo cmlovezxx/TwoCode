@@ -8,10 +8,10 @@ public class BlankProtocal extends BaseProtocal<String> {
 		return null;
 	}
 
-	@Override
-	public String paserData() {
-
-		return "";
-	}
+	// @Override
+	// public String paserData() {
+	//
+	// return "";
+	// }
 
 }

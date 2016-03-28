@@ -45,7 +45,8 @@ public class SharedPreferencesManager {
 			Editor editor = sp.edit();
 			editor.putLong("time", System.currentTimeMillis());
 			editor.commit();
-			MiddleUIManager.getInstance().ChangeUI(ConstantValue.BLANK_INFO);
+			MiddleUIManager.getInstance().ChangeUI(ConstantValue.BLANK_INFO,
+					null);
 			ShowTopAndBottom(1);
 		} else {
 			Toast.makeText(
