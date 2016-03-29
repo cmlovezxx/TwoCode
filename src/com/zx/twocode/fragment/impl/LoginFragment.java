@@ -37,8 +37,6 @@ public class LoginFragment extends BaseFragment<String> implements
 			login_username.setText("");
 			break;
 		case R.id.zx_user_login:
-			// 服务器数据有了之后打开
-			// refreshView();
 			if (login_username.getText() == null
 					|| login_password.getText() == null) {
 				Log.e("Test", login_username.getText().toString());

@@ -43,7 +43,7 @@
                         android:id="@+id/zx_tv_equipmentcode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#828282"
+                        android:textColor="#000000"
                         android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -89,7 +89,7 @@
                         android:id="@+id/zx_tv_equipmentname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#828282"
+                        android:textColor="#000000"
                         android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -135,7 +135,7 @@
                         android:id="@+id/zx_tv_trademark"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#828282"
+                        android:textColor="#000000"
                         android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -181,7 +181,7 @@
                         android:id="@+id/zx_tv_type"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#828282"
+                        android:textColor="#000000"
                         android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -227,7 +227,7 @@
                         android:id="@+id/zx_tv_specification"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#828282"
+                        android:textColor="#000000"
                         android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -273,7 +273,7 @@
                         android:id="@+id/zx_tv_provider"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#828282"
+                        android:textColor="#000000"
                         android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -319,7 +319,7 @@
                         android:id="@+id/zx_tv_procurementdate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#828282"
+                        android:textColor="#000000"
                         android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -365,7 +365,7 @@
                         android:id="@+id/zx_tv_batchnumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#828282"
+                        android:textColor="#000000"
                         android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -411,7 +411,7 @@
                         android:id="@+id/zx_tv_placementposition"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#828282"
+                        android:textColor="#000000"
                         android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>

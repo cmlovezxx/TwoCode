@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * http://blog.csdn.net/lmj623565791/article/details/40212367 准备把bean数据到这个Node中
+ * http://blog.csdn.net/lmj623565791/article/details/40212367 准备把bean数据传到这个Node中
  * 
  * @author zhy
  * 
@@ -88,17 +88,8 @@ public class Node {
 		return parent == null;
 	}
 
-	/**
-	 * 判断父节点是否展开
-	 * 
-	 * @return
-	 */
-	// public boolean isParentExpand()
-	// {
-	// if (parent == null)
-	// return false;
-	// return parent.isExpand();
-	// }
+	
+	
 
 	/**
 	 * 是否是叶子界点

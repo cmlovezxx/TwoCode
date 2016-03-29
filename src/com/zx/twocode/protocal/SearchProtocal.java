@@ -12,14 +12,6 @@ public class SearchProtocal extends BaseProtocal<SearchListBean> {
 		SearchListBean searchListBean = (SearchListBean) gson.fromJson(json,
 				SearchListBean.class);
 		return searchListBean;
-		// return null;
 	}
-
-	// @Override
-	// public SearchListBean paserData() {
-	// SearchListBean searchListBean = new SearchListBean();
-	// searchListBean.setTestData();
-	// return searchListBean;
-	// }
 
 }

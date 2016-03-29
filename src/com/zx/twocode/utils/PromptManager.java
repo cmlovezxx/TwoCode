@@ -5,8 +5,6 @@ import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
@@ -33,16 +31,6 @@ public class PromptManager {
 		dialog.setCanceledOnTouchOutside(false);
 	}
 
-	// public static void showProgressDialog(Context context) {
-	// dialog = new ProgressDialog(context);
-	// // dialog.setIndeterminateDrawable();
-	// // dialog.setIcon(R.drawable.icon);
-	// // dialog.setTitle(R.string.app_name);
-	//
-	// // dialog.setMessage("请等候，数据加载中……");
-	// dialog.show();
-	// dialog.setCanceledOnTouchOutside(false);
-	// }
 	public static void closeProgressDialog() {
 		if (dialog != null && dialog.isShowing()) {
 			dialog.dismiss();
@@ -87,6 +75,7 @@ public class PromptManager {
 							intent.setAction("android.intent.action.VIEW");
 						}
 						context.startActivity(intent);
+						alertDialog.dismiss();
 					}
 				});
 	}
@@ -121,40 +110,6 @@ public class PromptManager {
 					}
 				});
 	}
-
-	// public static void showNoNetWork(final Context context) {
-	// AlertDialog.Builder builder = new Builder(context);
-	// builder
-	// //
-	// .setTitle(R.string.app_name)
-	// //
-	// .setMessage("当前无网络")
-	// .setPositiveButton("设置", new OnClickListener() {
-	//
-	// @Override
-	// public void onClick(DialogInterface dialog, int which) {
-	// // 跳转到系统的网络设置界面
-	// Intent intent = null;
-	// // intent.setClassName("com.android.settings",
-	// // "com.android.settings.WirelessSettings");
-	// // context.startActivity(intent);
-	//
-	// if (android.os.Build.VERSION.SDK_INT > 10) {
-	// intent = new Intent(
-	// android.provider.Settings.ACTION_SETTINGS);
-	// } else {
-	// intent = new Intent();
-	// ComponentName component = new ComponentName(
-	// "com.android.settings",
-	// "com.android.settings.WirelessSettings");
-	// intent.setComponent(component);
-	// intent.setAction("android.intent.action.VIEW");
-	// }
-	// context.startActivity(intent);
-	//
-	// }
-	// }).setNegativeButton("知道了", null).show();
-	// }
 
 	/**
 	 * 退出系统
@@ -222,28 +177,6 @@ public class PromptManager {
 
 	}
 
-	// public static void showExitSystem(Context context) {
-	// AlertDialog.Builder builder = new Builder(context);
-	// builder
-	// //
-	// .setTitle(R.string.app_name)
-	// //
-	// .setMessage("是否退出应用")
-	// .setPositiveButton("确定", new OnClickListener() {
-	//
-	// @Override
-	// public void onClick(DialogInterface dialog, int which) {
-	// android.os.Process.killProcess(android.os.Process
-	// .myPid());
-	// // 多个Activity——懒人听书：没有彻底退出应用
-	// // 将所有用到的Activity都存起来，获取全部，干掉
-	// // BaseActivity——onCreated——放到容器中
-	// }
-	// })//
-	// .setNegativeButton("取消", null)//
-	// .show();
-	//
-	// }
 	/**
 	 * 显示错误提示框
 	 * 

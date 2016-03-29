@@ -67,12 +67,10 @@ public class SearchFragment extends BaseFragment<SearchListBean> {
 					getBundle().getString("searchresult") };
 			return strings;
 		}
-		// String[] strings = { "requestcode", "002" };
 		return null;
 	}
 
 	protected void setView(final SearchListBean result) {
-		// TODO Auto-generated method stub
 		listViewSearch.setAdapter(new SearchListViewAdapter(result
 				.getSouSuoJieGuo(), context));
 		listViewSearch.setSelector(R.color.list_item_click);
@@ -96,11 +94,5 @@ public class SearchFragment extends BaseFragment<SearchListBean> {
 		});
 	}
 
-	// @Override
-	// protected BaseProtocal<SearchListBean> createImplProtocal() {
-	// // TODO 发布时删除
-	// // GlobalParams.hasData = false;
-	// return new SearchProtocal();
-	// }
 
 }

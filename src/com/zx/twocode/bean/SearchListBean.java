@@ -14,27 +14,7 @@ public class SearchListBean {
 		this.SouSuoJieGuo = SouSuoJieGuo;
 	}
 
-	// public void setTestData() {
-	//
-	// SearchBean s1 = new SearchBean();
-	// s1.setEquipmentcode("01");
-	// s1.setEquipmentname("E");
-	// s1.setEquipmenttype("类型");
-	// s1.setPlacementposition("安置位置");
-	// Table1.add(0, s1);
-	// SearchBean s2 = new SearchBean();
-	// s2.setEquipmentcode("02");
-	// s2.setEquipmentname("E");
-	// s2.setEquipmenttype("类型");
-	// s2.setPlacementposition("安置位置");
-	// Table1.add(1, s2);
-	// SearchBean s3 = new SearchBean();
-	// s3.setEquipmentcode("03");
-	// s3.setEquipmentname("E");
-	// s3.setEquipmenttype("类型");
-	// s3.setPlacementposition("安置位置");
-	// Table1.add(2, s3);
-	// }
+	
 
 	public class SearchBean {
 		private String equipmentcode;

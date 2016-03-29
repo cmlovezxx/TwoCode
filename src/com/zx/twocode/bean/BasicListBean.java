@@ -1,16 +1,17 @@
 package com.zx.twocode.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BasicListBean {
+public class BasicListBean implements Serializable {
 	private List<BasicBean> JiBenXinXi = new ArrayList<BasicBean>();
 
 	public List<BasicBean> getJiBenXinXi() {
 		return JiBenXinXi;
 	}
 
-	public void setJiBenXinXi(List<BasicBean> data) {
+	public void setJiBenXinXi(List<BasicBean> JiBenXinXi) {
 		this.JiBenXinXi = JiBenXinXi;
 	}
 

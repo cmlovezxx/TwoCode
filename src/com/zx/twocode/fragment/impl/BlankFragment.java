@@ -4,7 +4,6 @@ import android.view.View;
 
 import com.zx.twocode.R;
 import com.zx.twocode.fragment.BaseFragment;
-import com.zx.twocode.protocal.BaseProtocal;
 
 public class BlankFragment extends BaseFragment<String> {
 
@@ -16,22 +15,6 @@ public class BlankFragment extends BaseFragment<String> {
 		return view;
 	}
 
-//	@Override
-//	protected void setView(String result) {
-//
-//	}
-
-//	@Override
-//	public void refreshView() {
-//
-//	}
-
-//	@Override
-//	protected BaseProtocal<String> createImplProtocal() {
-//		// GlobalParams.hasData = false;
-//		// return new BlankProtocal();
-//		return null;
-//	}
 
 	@Override
 	protected String[] getParams() {

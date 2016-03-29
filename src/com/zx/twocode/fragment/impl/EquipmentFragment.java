@@ -52,12 +52,6 @@ public class EquipmentFragment extends BaseFragment<EquipmentListBean> {
 		return view;
 	}
 
-	// protected EquipmentListBean doInBackground(String... params) {
-	// SystemClock.sleep(500);
-	// EquipmentListBean equipmentListBean = new EquipmentListBean();
-	// equipmentListBean.setTestData();
-	// return equipmentListBean;
-	// }
 	@Override
 	public void refreshView() {
 		if (GlobalParams.currentEquipmentBean.getEquipmentCode() != null) {
@@ -134,7 +128,6 @@ public class EquipmentFragment extends BaseFragment<EquipmentListBean> {
 			zx_ll_path.addView(tv, new LinearLayout.LayoutParams(
 					LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 		}
-		// zx_tv_currentequipment.setText(currentNode.getName() + ":");
 		zx_tv_current_equipmentcode.setText(currentNode.getId());
 		zx_tv_current_equipmentname.setText(currentNode.getName());
 		adapter = new EquipmentListViewAdapter(currentNode, context);
@@ -152,7 +145,7 @@ public class EquipmentFragment extends BaseFragment<EquipmentListBean> {
 	}
 
 	protected void setView(EquipmentListBean result) {
-		nodes = Helper.getNodes(result.getData());
+		nodes = Helper.getNodes(result.getSheBeiMuLu());
 		for (Node n : nodes) {
 
 			if (n.getId().equals(
@@ -172,7 +165,6 @@ public class EquipmentFragment extends BaseFragment<EquipmentListBean> {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				currentNode = currentNode.getChildren().get(arg2);
-				// GlobalParams.currentEquipment = currentNode.getId();
 
 				GlobalParams.currentEquipmentBean.setEquipmentCode(currentNode
 						.getId());
@@ -184,7 +176,5 @@ public class EquipmentFragment extends BaseFragment<EquipmentListBean> {
 		});
 
 	}
-
-	
 
 }

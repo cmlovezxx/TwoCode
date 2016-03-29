@@ -3,7 +3,9 @@ package com.zx.twocode;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -61,12 +63,17 @@ public class MainActivity extends FragmentActivity {
 		if (resultCode == RESULT_OK) {
 			String result = data.getExtras().getString("result");
 			// TODO 取得结果后显示在第一个界面中
-			if (result != null) {
+			String firstResult = result.substring(2, 12);
+			Log.e("Test", firstResult);
+			if (result != null && firstResult.equals("JiBenXinXi")) {
 
 				GlobalParams.isFirst = true;
 				Gson gson = new Gson();
 				BasicListBean basicListBean = (BasicListBean) gson.fromJson(
 						result, BasicListBean.class);
+				// if (basicListBean.getJiBenXinXi().get(0).getEquipmentcode()
+				// .length() > 0) {
+
 				GlobalParams.currentEquipmentBean
 						.setEquipmentCode(basicListBean.getJiBenXinXi().get(0)
 								.getEquipmentcode());
@@ -74,9 +81,12 @@ public class MainActivity extends FragmentActivity {
 						.setEquipmentName(basicListBean.getJiBenXinXi().get(0)
 								.getEquipmentname());
 				Bundle bundle = new Bundle();
-				bundle.putString("scanresult", result);
+				bundle.putSerializable("scanresult",  basicListBean);
 				MiddleUIManager.getInstance().ChangeUI(
 						ConstantValue.BASIC_INFO, bundle);
+			} else {
+				MiddleUIManager.getInstance().ChangeUI(
+						ConstantValue.BASIC_INFO, null);
 			}
 		}
 	}

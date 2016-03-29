@@ -61,7 +61,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
                     android:text="version 1.0.0"
-                    android:textColor="#828282"
                     android:textSize="10sp" />
             </LinearLayout>
         </LinearLayout>

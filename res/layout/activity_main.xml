@@ -35,7 +35,6 @@
                 android:hint="@string/search"
                 android:imeOptions="actionDone"
                 android:singleLine="true"
-                android:text=""
                 android:textColor="@color/textcolor_login" />
 
             <ImageView

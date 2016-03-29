@@ -4,12 +4,6 @@ public class CurrentEquipmentBean {
 	private String EquipmentCode;
 	private String EquipmentName;
 
-//	public CurrentEquipmentBean(String equipmentCode, String equipmentName) {
-//		super();
-//		EquipmentCode = equipmentCode;
-//		EquipmentName = equipmentName;
-//	}
-
 	public String getEquipmentCode() {
 		return EquipmentCode;
 	}

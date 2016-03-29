@@ -1,14 +1,9 @@
 package com.zx.twocode.utils;
 
-import android.content.ContentResolver;
 import android.content.Context;
-import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.util.Log;
-
-import com.zx.twocode.global.GlobalParams;
 
 public class NetUtil {
 	/**
@@ -38,23 +33,23 @@ public class NetUtil {
 	 * 
 	 * @param context
 	 */
-	private static void readAPN(Context context) {
-		Uri PREFERRED_APN_URI = Uri
-				.parse("content://telephony/carriers/preferapn");// 4.0模拟器屏蔽掉该权限
-
-		// 操作联系人类似
-		ContentResolver resolver = context.getContentResolver();
-		// 判断是哪个APN被选中了
-		Cursor cursor = resolver.query(PREFERRED_APN_URI, null, null, null,
-				null);
-
-		if (cursor != null && cursor.moveToFirst()) {
-			GlobalParams.PROXY = cursor.getString(cursor
-					.getColumnIndex("proxy"));
-			GlobalParams.PORT = cursor.getInt(cursor.getColumnIndex("port"));
-		}
-
-	}
+	// private static void readAPN(Context context) {
+	// Uri PREFERRED_APN_URI = Uri
+	// .parse("content://telephony/carriers/preferapn");// 4.0模拟器屏蔽掉该权限
+	//
+	// // 操作联系人类似
+	// ContentResolver resolver = context.getContentResolver();
+	// // 判断是哪个APN被选中了
+	// Cursor cursor = resolver.query(PREFERRED_APN_URI, null, null, null,
+	// null);
+	//
+	// if (cursor != null && cursor.moveToFirst()) {
+	// GlobalParams.PROXY = cursor.getString(cursor
+	// .getColumnIndex("proxy"));
+	// GlobalParams.PORT = cursor.getInt(cursor.getColumnIndex("port"));
+	// }
+	//
+	// }
 
 	/**
 	 * 判断：Mobile链接

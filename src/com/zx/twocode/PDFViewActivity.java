@@ -40,28 +40,7 @@ public class PDFViewActivity extends Activity {
 			localPath = getCacheDir().getAbsolutePath() + "/QRcode_pdf_cache";
 		}
 		download(fileUrl, localPath);
-		// folder = new File(getCacheDir().getAbsolutePath() +
-		// "/QRcode_pdf_cache");
-		// String filename = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
-		// Log.e("Test", exist + "");
-		// if (folder.listFiles() != null) {
-		// for (File f : folder.listFiles()) {
-		// if (f.getName().equals(filename)) {
-		// exist = true;
-		// // loadPDF("/" + filename);
-		//
-		// Log.e("exist", exist + "");
-		// break;
-		// }
-		// }
-		// }
-		// if (exist) {
-		// loadPDF("/" + filename);
-		// } else {
-		//
-		// download(fileUrl);
-		// }
-		// Log.e("Test", exist + "");
+
 	}
 
 	public void loadPDF(String filename) {
@@ -108,7 +87,6 @@ public class PDFViewActivity extends Activity {
 
 					@Override
 					public void onSuccess(ResponseInfo<File> responseInfo) {
-						// TODO Auto-generated method stub
 						// tvInfo.setText("downloaded:" +
 						// responseInfo.result.getPath());
 						Log.e("download", "成功");

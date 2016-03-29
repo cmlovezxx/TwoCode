@@ -1,8 +1,5 @@
 package com.zx.twocode.manager;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -20,12 +17,15 @@ public class MiddleUIManager {
 	private static MiddleUIManager instance = new MiddleUIManager();
 	private MyViewPager vp;
 
+	@SuppressWarnings("rawtypes")
 	private BaseFragment currentFragment;
 
+	@SuppressWarnings("rawtypes")
 	public BaseFragment getCurrentFragment() {
 		return currentFragment;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void setCurrentFragment(BaseFragment currentFragment) {
 		this.currentFragment = currentFragment;
 	}
@@ -50,6 +50,7 @@ public class MiddleUIManager {
 	private void setListner() {
 		vp.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 
+			@SuppressWarnings("rawtypes")
 			@Override
 			public void onPageSelected(int position) {
 				super.onPageSelected(position);

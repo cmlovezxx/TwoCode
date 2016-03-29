@@ -1,5 +1,6 @@
 package com.zx.twocode.protocal;
 
+import com.zx.twocode.global.ConstantValue;
 import com.zx.twocode.http.HttpHelper;
 import com.zx.twocode.http.HttpHelper.HttpResult;
 
@@ -13,22 +14,6 @@ public abstract class BaseProtocal<T> {
 			return paserJson(json);
 		}
 
-		// else {
-		// return paserData();
-		// }
-		//
-		// return null;
-		// TODO 测试用，发布删掉
-		// if (GlobalParams.hasData) {
-		// String json = loadServer(params);
-		// // 其次解析json
-		// if (json != null) {
-		// return paserJson(json);
-		// }
-		// } else {
-		// return paserData();
-		// }
-		// 删掉到此
 		return null;
 	}
 
@@ -37,14 +22,14 @@ public abstract class BaseProtocal<T> {
 	 * 
 	 * @return
 	 */
-//	public abstract T paserData();
+	// public abstract T paserData();
 
 	// 解析json需要子类根据自己的数据解析
 	public abstract T paserJson(String json);
 
 	private String loadServer(String... params) {
 
-		HttpResult httpResult = HttpHelper.get(HttpHelper.URL
+		HttpResult httpResult = HttpHelper.get(ConstantValue.SERVER_URL
 				+ getRequestParams(params));
 		if (httpResult == null)
 			return null;

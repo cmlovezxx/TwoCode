@@ -14,9 +14,5 @@ public class BasicProtocal extends BaseProtocal<BasicListBean> {
 		return basicListBean;
 	}
 
-	// @Override
-	// public BasicListBean paserData() {
-	// return null;
-	// }
 
 }

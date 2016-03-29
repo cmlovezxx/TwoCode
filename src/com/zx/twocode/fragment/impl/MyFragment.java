@@ -39,22 +39,6 @@ public class MyFragment extends BaseFragment<String> {
 		return view;
 	}
 
-//	@Override
-//	public void refreshView() {
-//	}
-
-	// @Override
-	// protected void setView(String result) {
-	//
-	// }
-
-	// @Override
-	// protected BaseProtocal<String> createImplProtocal() {
-	// // GlobalParams.hasData = false;
-	// // return new MyProtocal();
-	// return null;
-	// }
-
 	@Override
 	protected String[] getParams() {
 		return null;
