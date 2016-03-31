@@ -5,10 +5,13 @@ import java.util.Collections;
 import java.util.List;
 
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
@@ -33,6 +36,7 @@ public class EquipmentFragment extends BaseFragment<EquipmentListBean> {
 	private List<Node> currentAllParent = new ArrayList<Node>();
 	private LinearLayout zx_ll_path;
 	private EquipmentListViewAdapter adapter;
+	private ImageButton iv1;
 	// 所有的数据转成Node
 	private List<Node> nodes;
 
@@ -45,6 +49,7 @@ public class EquipmentFragment extends BaseFragment<EquipmentListBean> {
 				.findViewById(R.id.zx_tv_current_equipmentname);
 		zx_tv_current_equipmentcode = (TextView) view
 				.findViewById(R.id.zx_tv_current_equipmentcode);
+		iv1 = (ImageButton) view.findViewById(R.id.iv1);
 		zx_ll_path = (LinearLayout) view.findViewById(R.id.zx_ll_path);
 		zx_lv_currentchild.setSelector(R.color.list_item_click);
 		zx_lv_currentchild.setCacheColorHint(R.color.list_item_click);
@@ -159,6 +164,23 @@ public class EquipmentFragment extends BaseFragment<EquipmentListBean> {
 		zx_lv_currentchild.setSelector(R.color.list_item_click);
 		zx_lv_currentchild.setCacheColorHint(R.color.list_item_click);
 		zx_lv_currentchild.setDividerHeight(0);
+		// 向上健
+		iv1.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				Log.e("xiangshang", "qidong");
+				if (currentNode.getParent() != null) {
+					currentNode = currentNode.getParent();
+					GlobalParams.currentEquipmentBean
+							.setEquipmentCode(currentNode.getId());
+					GlobalParams.currentEquipmentBean
+							.setEquipmentName(currentNode.getName());
+					getAllData();
+				}
+			}
+		});
 		zx_lv_currentchild.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override

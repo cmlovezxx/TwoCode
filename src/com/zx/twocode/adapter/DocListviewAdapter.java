@@ -8,14 +8,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zx.twocode.R;
-import com.zx.twocode.bean.DocumentListBean;
+import com.zx.twocode.bean.DocumentListBean2;
 
 public class DocListviewAdapter extends BaseExpandableListAdapter {
 
 	private Context context;
-	private DocumentListBean docList;
+	private DocumentListBean2 docList;
 
-	public DocListviewAdapter(Context context, DocumentListBean doc) {
+	public DocListviewAdapter(Context context, DocumentListBean2 doc) {
 		super();
 		this.context = context;
 		this.docList = doc;
@@ -37,7 +37,7 @@ public class DocListviewAdapter extends BaseExpandableListAdapter {
 
 	@Override
 	public int getChildrenCount(int groupPosition) {
-		return docList.getDocumentList().get(groupPosition).getFolder().size();
+		return docList.getDocumentList().get(groupPosition).getFolders().size();
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class DocListviewAdapter extends BaseExpandableListAdapter {
 
 	@Override
 	public Object getChild(int groupPosition, int childPosition) {
-		return docList.getDocumentList().get(groupPosition).getFolder()
+		return docList.getDocumentList().get(groupPosition).getFolders()
 				.get(childPosition);
 	}
 
@@ -110,7 +110,7 @@ public class DocListviewAdapter extends BaseExpandableListAdapter {
 		}
 
 		childViewHolder.label.setText(docList.getDocumentList()
-				.get(groupPosition).getFolder().get(childPosition)
+				.get(groupPosition).getFolders().get(childPosition)
 				.getDocumentName());
 
 		return convertView;

@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/iv1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -93,10 +93,10 @@
     </LinearLayout>
 
     <ListView
-        android:layout_marginLeft="25dp"
         android:id="@+id/zx_lv_currentchild"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp" >
     </ListView>
 
 </LinearLayout>

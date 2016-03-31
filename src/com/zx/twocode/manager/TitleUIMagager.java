@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.zx.twocode.R;
 import com.zx.twocode.fragment.impl.SearchFragment;
 import com.zx.twocode.global.ConstantValue;
+import com.zx.twocode.global.GlobalParams;
 import com.zxing.activity.CaptureActivity;
 
 public class TitleUIMagager {
@@ -57,6 +58,8 @@ public class TitleUIMagager {
 
 			@Override
 			public void onClick(View v) {
+				MiddleUIManager.getInstance().ChangeUI(
+						ConstantValue.BLANK_INFO, null);
 				Intent i = new Intent(activity, CaptureActivity.class);
 				activity.startActivityForResult(i, 0);
 
@@ -85,7 +88,8 @@ public class TitleUIMagager {
 					BottomUIMagager.getInstance().setAllCheckFalse();
 
 				} else {
-					Toast.makeText(activity, "Search is empty！",
+					Toast.makeText(activity,
+							"The length of keywords should be at least 3！",
 							Toast.LENGTH_LONG).show();
 				}
 				clearSearch();

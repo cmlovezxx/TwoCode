@@ -1,5 +1,6 @@
 package com.zx.twocode.fragment.impl;
 
+import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
 import android.widget.TextView;
@@ -76,8 +77,7 @@ public class BasicFragment extends BaseFragment<BasicListBean> {
 				}
 			}.executeProxy();
 		} else {
-			if (((BasicListBean) getBundle().getSerializable("scanresult"))
-					.getJiBenXinXi().get(0).getEquipmentcode().length() > 0) {
+			if (getBundle() != null) {
 
 				// Gson gson = new Gson();
 				// BasicListBean basicListBean = (BasicListBean) gson.fromJson(
@@ -85,6 +85,10 @@ public class BasicFragment extends BaseFragment<BasicListBean> {
 				// BasicListBean.class);
 				setView((BasicListBean) getBundle().getSerializable(
 						"scanresult"));
+//				bundle = null;
+
+			} else {
+				setView();
 			}
 		}
 
@@ -114,4 +118,15 @@ public class BasicFragment extends BaseFragment<BasicListBean> {
 				.getPlacementposition());
 	}
 
+	private void setView() {
+		equipmentcode.setText("");
+		equipmentname.setText("");
+		trademark.setText("");
+		type.setText("");
+		specification.setText("");
+		provider.setText("");
+		procurementdate.setText("");
+		batchnumber.setText("");
+		placementposition.setText("");
+	}
 }

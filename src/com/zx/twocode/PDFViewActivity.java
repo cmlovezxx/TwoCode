@@ -53,6 +53,28 @@ public class PDFViewActivity extends Activity {
 				.onLoad(null).onPageChange(null).enableDoubletap(true).load();
 	}
 
+	// 删除文件夹和文件夹里面的文件
+	public void deleteDir() {
+		File dir = new File(localPath);
+		if (dir == null || !dir.exists() || !dir.isDirectory())
+			return;
+
+		for (File file : dir.listFiles()) {
+			if (file.isFile())
+				file.delete(); // 删除所有文件
+			else if (file.isDirectory())
+				deleteDir(); // 递规的方式删除文件夹
+		}
+		// dir.delete();// 删除目录本身
+	}
+
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		deleteDir();
+		Log.e("Test", "删除pdf");
+	}
+
 	public void download(String urlPath, String localPath) {
 		final String filename = urlPath.substring(urlPath.lastIndexOf("/"));
 		HttpUtils http = new HttpUtils();

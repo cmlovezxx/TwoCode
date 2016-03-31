@@ -1,5 +1,9 @@
 package com.zx.twocode.fragment.impl;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import android.content.Intent;
 import android.os.SystemClock;
 import android.view.View;
@@ -12,14 +16,18 @@ import android.widget.TextView;
 import com.zx.twocode.PDFViewActivity;
 import com.zx.twocode.R;
 import com.zx.twocode.adapter.DocListviewAdapter;
+import com.zx.twocode.bean.Document;
 import com.zx.twocode.bean.DocumentListBean;
+import com.zx.twocode.bean.DocumentListBean.DocumentBean;
+import com.zx.twocode.bean.DocumentListBean2;
+import com.zx.twocode.bean.Folder;
 import com.zx.twocode.fragment.BaseFragment;
 import com.zx.twocode.global.GlobalParams;
 import com.zx.twocode.protocal.BaseProtocal;
 import com.zx.twocode.protocal.DocumentProtocal;
 import com.zx.twocode.utils.PromptManager;
 
-public class DocumentFragment extends BaseFragment<DocumentListBean> {
+public class DocumentFragment extends BaseFragment<DocumentListBean2> {
 	private TextView equipmentName;
 	private TextView currentDirectory;
 	private ExpandableListView docListView;
@@ -77,10 +85,49 @@ public class DocumentFragment extends BaseFragment<DocumentListBean> {
 		}
 	}
 
-	protected void setView(final DocumentListBean result) {
+	// 去除数组中重复的记录
+	public static List<String> array_unique(List<String> a) {
+		// array_unique
+		List<String> list = new LinkedList<String>();
+		for (int i = 0; i < a.size(); i++) {
+			if (!list.contains(a.get(i))) {
+				list.add(a.get(i));
+			}
+		}
+		return list;
+	}
 
-		equipmentName.setText(result.getEquipmentname());
-		DocListviewAdapter docAdapter = new DocListviewAdapter(context, result);
+	protected void setView(final DocumentListBean result) {
+		List<String> documentfolders = new ArrayList<String>();
+
+		for (DocumentBean documentBean : result.WenDangMuLu) {
+
+			documentfolders.add(result.WenDangMuLu.get(0).getDocumentfolder());
+		}
+		final List<String> uniqueDocumentfolders = array_unique(documentfolders);
+		final DocumentListBean2 bean2 = new DocumentListBean2();
+		for (String documentfolder : documentfolders) {
+
+			for (DocumentBean documentBean : result.WenDangMuLu) {
+				if (documentfolder.equals(documentBean.getDocumentfolder())) {
+					List<Folder> list = new ArrayList<Folder>();
+					List<Document> listDocument = new ArrayList<Document>();
+					Document document = new Document();
+					document.setDocumentName(documentBean.getDocumentname());
+					document.setDocumentUrl(documentBean.getDocumenturl());
+					Folder folders = new Folder();
+					folders.setFolderName(documentfolder);
+					folders.setFolders(listDocument);
+					listDocument.add(document);
+					list.add(folders);
+					bean2.setDocumentList(list);
+
+				}
+			}
+		}
+		equipmentName.setText(GlobalParams.currentEquipmentBean
+				.getEquipmentName());
+		DocListviewAdapter docAdapter = new DocListviewAdapter(context, bean2);
 		docListView.setGroupIndicator(null);
 		docListView.setSelector(R.color.list_item_click);
 		docListView.setCacheColorHint(R.color.list_item_click);
@@ -91,8 +138,10 @@ public class DocumentFragment extends BaseFragment<DocumentListBean> {
 			@Override
 			public void onGroupExpand(int groupPosition) {
 
-				currentDirectory.setText(result.getDocumentList()
-						.get(groupPosition).getFolderName());
+				// currentDirectory.setText(result.getDocumentList()
+				// .get(groupPosition).getFolderName());
+				currentDirectory.setText(uniqueDocumentfolders
+						.get(groupPosition));
 			}
 		});
 		docListView.setOnGroupCollapseListener(new OnGroupCollapseListener() {
@@ -108,17 +157,17 @@ public class DocumentFragment extends BaseFragment<DocumentListBean> {
 			public boolean onChildClick(ExpandableListView parent, View v,
 					int groupPosition, int childPosition, long id) {
 
-				currentDirectory.setText(result.getDocumentList()
+				currentDirectory.setText(bean2.getDocumentList()
 						.get(groupPosition).getFolderName());
 
 				Intent intent = new Intent(getActivity(), PDFViewActivity.class);
 				intent.putExtra("url",
-						"http://192.168.8.125:6001/炼钢_连铸批量计划与调度仿真研究_余小安.pdf");
+						bean2.getDocumentList().get(groupPosition).getFolders()
+								.get(childPosition).getDocumentUrl());
 				getActivity().startActivity(intent);
 
 				return true;
 			}
 		});
 	}
-
 }

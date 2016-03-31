@@ -17,7 +17,7 @@ public abstract class BaseFragment<Params> extends Fragment {
 	protected FragmentActivity context;
 
 	// 储存其他页面传过来的数据
-	private Bundle bundle;
+	protected Bundle bundle;
 
 	public Bundle getBundle() {
 		return bundle;
@@ -48,8 +48,6 @@ public abstract class BaseFragment<Params> extends Fragment {
 	 */
 	public abstract View createView();
 
-	
-
 	/**
 	 * 刷新界面
 	 * 
@@ -57,21 +55,13 @@ public abstract class BaseFragment<Params> extends Fragment {
 	 */
 
 	public void refreshView() {
-		
+
 	}
-
-	
-
-	
 
 	// TODO 异步加载框架 读取网络 获取数据
 	@SuppressWarnings("hiding")
 	protected abstract class MyHttpTask<Params> extends
 			AsyncTask<String, Void, Params> {
-
-		
-
-		
 
 		/**
 		 * 类似与Thread.start方法 由于final修饰，无法Override，方法重命名 省略掉网络判断

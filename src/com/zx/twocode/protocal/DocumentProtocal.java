@@ -2,6 +2,7 @@ package com.zx.twocode.protocal;
 
 import com.google.gson.Gson;
 import com.zx.twocode.bean.DocumentListBean;
+import com.zx.twocode.bean.DocumentListBean2;
 
 public class DocumentProtocal extends BaseProtocal<DocumentListBean> {
 

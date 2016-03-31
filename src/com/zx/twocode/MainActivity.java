@@ -3,7 +3,6 @@ package com.zx.twocode;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -12,6 +11,7 @@ import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.zx.twocode.bean.BasicListBean;
@@ -63,30 +63,48 @@ public class MainActivity extends FragmentActivity {
 		if (resultCode == RESULT_OK) {
 			String result = data.getExtras().getString("result");
 			// TODO 取得结果后显示在第一个界面中
-			String firstResult = result.substring(2, 12);
-			Log.e("Test", firstResult);
-			if (result != null && firstResult.equals("JiBenXinXi")) {
+			String firstResult = result.substring(0, 1);
+			Log.e("Test1", firstResult);
+			if (result != null) {
+				if (firstResult.equals("{")) {
+					GlobalParams.isFirst = true;
+					Gson gson = new Gson();
 
-				GlobalParams.isFirst = true;
-				Gson gson = new Gson();
-				BasicListBean basicListBean = (BasicListBean) gson.fromJson(
-						result, BasicListBean.class);
-				// if (basicListBean.getJiBenXinXi().get(0).getEquipmentcode()
-				// .length() > 0) {
+					BasicListBean basicListBean = (BasicListBean) gson
+							.fromJson(result, BasicListBean.class);
+					// if
+					// (basicListBean.getJiBenXinXi().get(0).getEquipmentcode()
+					// .length() > 0) {
 
-				GlobalParams.currentEquipmentBean
-						.setEquipmentCode(basicListBean.getJiBenXinXi().get(0)
-								.getEquipmentcode());
-				GlobalParams.currentEquipmentBean
-						.setEquipmentName(basicListBean.getJiBenXinXi().get(0)
-								.getEquipmentname());
-				Bundle bundle = new Bundle();
-				bundle.putSerializable("scanresult",  basicListBean);
-				MiddleUIManager.getInstance().ChangeUI(
-						ConstantValue.BASIC_INFO, bundle);
-			} else {
-				MiddleUIManager.getInstance().ChangeUI(
-						ConstantValue.BASIC_INFO, null);
+					GlobalParams.currentEquipmentBean
+							.setEquipmentCode(basicListBean.getJiBenXinXi()
+									.get(0).getEquipmentcode());
+					GlobalParams.currentEquipmentBean
+							.setEquipmentName(basicListBean.getJiBenXinXi()
+									.get(0).getEquipmentname());
+					Bundle bundle = new Bundle();
+					bundle.putSerializable("scanresult", basicListBean);
+					MiddleUIManager.getInstance().ChangeUI(
+							ConstantValue.BASIC_INFO, bundle);
+				} else {
+					GlobalParams.currentEquipmentBean.setEquipmentCode(null);
+					GlobalParams.currentEquipmentBean.setEquipmentName(null);
+					MiddleUIManager.getInstance().ChangeUI(
+							ConstantValue.BLANK_INFO, null);
+					Toast.makeText(this, "the code is invalid!",
+							Toast.LENGTH_LONG).show();
+					// if (MiddleUIManager.getInstance().getCurrentFragment()
+					// instanceof BasicFragment) {
+					// MiddleUIManager.getInstance().getCurrentFragment()
+					// .refreshView();
+					// }
+				}
+				BottomUIMagager.getInstance().setAllCheckFalse();
+				// if (MiddleUIManager.getInstance().getCurrentFragment()
+				// instanceof BasicFragment) {
+				// MiddleUIManager.getInstance().getCurrentFragment()
+				// .refreshView();
+				// }
 			}
 		}
 	}
